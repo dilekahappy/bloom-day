@@ -187,6 +187,106 @@ input,select,textarea{background:#fffdfdf0}
  .panel{padding-bottom:58px}
 }
 
+
+/* WINTER WONDERLAND — layout redesign */
+:root{--pink:#e6a7bd;--deep:#35445f;--ink:#39445c;--muted:#7e879d;--green:#426d5b;--line:#e9cbd8}
+body{
+ background:
+  radial-gradient(ellipse at 50% 0%,#243452 0,#354866 36%,#e9d5df 76%,#f7eaf0 100%);
+ background-attachment:fixed;color:#39445c
+}
+.wrap{max-width:1080px;padding-top:16px}
+.top{width:100%;padding:14px 18px;border-radius:20px;background:linear-gradient(100deg,#fff7f3f5,#f7e7edf5);border:1px solid #fff;box-shadow:0 8px 24px #17243c35}
+.brand{font-size:clamp(29px,7vw,42px);letter-spacing:.4px;color:#35445f}
+.date{font-size:13px;color:#66738b}
+.hero{
+ display:block;min-height:300px;padding:30px 30px 38px;
+ border:1px solid #f5dce6;border-radius:28px;
+ background:
+  radial-gradient(circle at 9% 13%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 22% 22%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 39% 8%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 68% 17%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 88% 11%,#fff 0 1px,transparent 2px),
+  linear-gradient(180deg,#172440 0%,#293d5d 48%,#b58c9e 100%);
+ box-shadow:0 16px 38px #17243c45
+}
+.hero:before{
+ content:"";position:absolute;inset:auto 0 0;height:46%;opacity:.95;pointer-events:none;
+ background:
+  linear-gradient(0deg,#f7e9ed 0 8%,transparent 8%),
+  linear-gradient(90deg,transparent 0 1%,#d9a9b9 1% 10%,transparent 10% 12%,#e9c0ca 12% 21%,transparent 21% 23%,#b9a8b9 23% 31%,transparent 31% 34%,#e5b5c4 34% 43%,transparent 43% 46%,#b6a5b9 46% 56%,transparent 56% 59%,#e6bdc9 59% 68%,transparent 68% 71%,#b7a7b9 71% 81%,transparent 81% 84%,#e4b5c4 84% 96%,transparent 96%);
+ clip-path:polygon(0 36%,8% 36%,8% 0,16% 0,16% 42%,25% 42%,25% 13%,34% 13%,34% 38%,44% 38%,44% 0,54% 0,54% 42%,64% 42%,64% 14%,73% 14%,73% 0,83% 0,83% 35%,92% 35%,92% 10%,100% 10%,100% 100%,0 100%)
+}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:18%;background:linear-gradient(180deg,transparent,#fff8);pointer-events:none}
+.hero>div{position:relative;z-index:2}
+.hero>div:first-of-type{max-width:100%;width:100%}
+.hero .holidaylights{letter-spacing:9px;color:#ffe4ad;text-shadow:0 0 12px #ffdc91}
+.hero .eyebrow{color:#ffe8ef;text-shadow:0 2px 6px #14223d}
+.hero h1{width:100%;max-width:none;margin:14px 0 12px;font-size:clamp(35px,7vw,58px);line-height:1.06;color:#fffaf8;text-shadow:0 2px 12px #14223dcc;text-align:left}
+.hero p{max-width:100%;font-size:16px;line-height:1.55;color:#fff8f5;text-shadow:0 1px 7px #14223dcc}
+.hero-art{display:none!important}
+.garland{color:#ffe2a8}
+nav{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;
+ overflow:visible;padding:17px 0 8px
+}
+.navbtn{
+ position:relative;display:flex;align-items:center;justify-content:center;gap:7px;
+ min-height:62px;padding:10px 7px;white-space:normal;text-align:center;
+ border-radius:17px;border:1px solid #f7dfe8;
+ background:linear-gradient(145deg,#fff9f6f2,#efd8e2f2);
+ color:#45536c;font-size:13px;font-weight:650;
+ box-shadow:0 5px 14px #1c2d4930
+}
+.navbtn:after{content:"❄";position:absolute;top:3px;right:7px;font-size:10px;color:#a7c4df}
+.navbtn.active{background:linear-gradient(145deg,#416d5b,#294b43);color:#fffaf5;border-color:#7b9c87}
+.grid{margin-top:14px;gap:14px}
+.panel,.rewardbox,.mini,.menuday,.reward{
+ position:relative;isolation:isolate;overflow:hidden;
+ border:1px solid #f5dce5;border-radius:23px;
+ background:
+  radial-gradient(circle at 12% 12%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 82% 20%,#fff9 0 1px,transparent 2px),
+  linear-gradient(145deg,#fff9f5f2 0%,#f8e8eef0 66%,#ecd8e4f5 100%);
+ box-shadow:0 9px 26px #1e2d4730
+}
+.panel:before,.rewardbox:before,.mini:before,.menuday:before,.reward:before{
+ content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:54px;opacity:.34;pointer-events:none;
+ background:
+  linear-gradient(0deg,#fff 0 8px,transparent 8px),
+  linear-gradient(90deg,transparent 0 3%,#d7aaba 3% 12%,transparent 12% 15%,#e6bdca 15% 24%,transparent 24% 27%,#c1b1c2 27% 36%,transparent 36% 39%,#e6bbc9 39% 49%,transparent 49% 52%,#c2b1c4 52% 63%,transparent 63% 66%,#e6bdca 66% 77%,transparent 77% 80%,#c4b1c2 80% 91%,transparent 91%);
+ clip-path:polygon(0 39%,8% 39%,8% 0,17% 0,17% 42%,27% 42%,27% 12%,36% 12%,36% 38%,46% 38%,46% 0,56% 0,56% 42%,66% 42%,66% 14%,75% 14%,75% 0,85% 0,85% 38%,94% 38%,94% 10%,100% 10%,100% 100%,0 100%)
+}
+.panel>* ,.rewardbox>* ,.mini>* ,.menuday>* ,.reward>*{position:relative;z-index:1}
+.panel h2{font-size:24px;color:#35445f}
+.panel .sub,.panel .note{color:#77829a}
+input,select,textarea{background:#fffafcf5;border-color:#e7ccd8;color:#39445c}
+button{background:linear-gradient(135deg,#4d7965,#315849);box-shadow:0 4px 12px #294d3d35}
+button.secondary{background:#f4e1e9;color:#5a5067;box-shadow:none}
+.mini{background:linear-gradient(145deg,#fff9f5f0,#f1dce7f2)}
+.day,.menuday{background:linear-gradient(145deg,#fff9f6f5,#f0dfe8f2)}
+.day.selected{background:linear-gradient(135deg,#4d7965,#315849)}
+.rewardbox{background:linear-gradient(145deg,#fff0dcf5,#f5e2e9f5)}
+.christmas{border-color:#f3d8e4}
+.launch-screen{background:radial-gradient(circle at 50% 30%,#435778,#172440 75%)}
+.launch-card:before{content:"❄  ✦  🎀  ✦  ❄";display:block;color:#ffe8ef;font-size:22px;letter-spacing:5px}
+.launch-title{color:#fff7f3}.launch-sub{color:#f2dce6}
+@media(max-width:800px){
+ .wrap{padding:12px 12px 40px}
+ .hero{min-height:280px;padding:27px 20px 36px}
+ .hero h1{font-size:clamp(34px,9vw,43px);max-width:none}
+ .hero p{font-size:15px;max-width:none}
+ nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .navbtn{min-height:58px;font-size:13px;border-radius:16px}
+ .grid{grid-template-columns:1fr}
+ .panel{padding:18px}
+ .panel:before{height:42px}
+ .add{grid-template-columns:1fr 1fr}
+ .add input:first-child{grid-column:1/-1}
+ .add input[type=date]{grid-column:1/-1}
+}
+
 </style>
 </head>
 <body>
