@@ -122,6 +122,71 @@ button.small{box-shadow:none}
  .top{padding:8px 11px}
 }
 
+
+/* Winter Wonderland refinement: readable hero + illustrated town in every panel */
+.hero{
+ min-height:235px;
+ background:
+  radial-gradient(circle at 8% 16%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 24% 28%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 48% 12%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 76% 22%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 91% 10%,#fff 0 1px,transparent 2px),
+  linear-gradient(180deg,#1d2946 0%,#52617d 57%,#e7c9d4 100%);
+ background-size:100% 100%;
+}
+.hero:before{
+ content:"";position:absolute;inset:auto 0 0;height:43%;
+ background:
+  linear-gradient(0deg,#f8edf0 0 12%,transparent 12%),
+  linear-gradient(90deg,transparent 0 2%,#e6b7c7 2% 9%,transparent 9% 11%,#f1cbd5 11% 19%,transparent 19% 22%,#d9bdca 22% 31%,transparent 31% 34%,#efc5d2 34% 43%,transparent 43% 47%,#d9bdca 47% 57%,transparent 57% 60%,#efc7d3 60% 69%,transparent 69% 73%,#d9bdca 73% 83%,transparent 83% 86%,#efc5d2 86% 96%,transparent 96%);
+ clip-path:polygon(0 28%,7% 28%,7% 0,17% 0,17% 32%,26% 32%,26% 9%,35% 9%,35% 30%,44% 30%,44% 0,54% 0,54% 34%,64% 34%,64% 10%,73% 10%,73% 0,83% 0,83% 27%,92% 27%,92% 8%,100% 8%,100% 100%,0 100%);
+ opacity:.34;pointer-events:none
+}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:14%;background:linear-gradient(180deg,transparent,#fff9);pointer-events:none}
+.hero>div{position:relative;z-index:2}
+.hero h1{max-width:570px;line-height:1.15;color:#fffdfb;text-shadow:0 2px 9px #17213b99}
+.hero p{color:#fff9f7;text-shadow:0 1px 5px #17213b88;font-weight:500}
+.hero .eyebrow{color:#ffe4ec;text-shadow:0 1px 5px #17213b}
+.hero .holidaylights{color:#ffe5a9}
+.hero-art:after{content:"🎄";font-size:clamp(64px,10vw,100px);filter:drop-shadow(0 0 14px #ffe4a5)}
+/* Every content window becomes a little snowy street scene */
+.panel,.rewardbox,.mini,.menuday,.reward{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:
+  radial-gradient(circle at 12% 13%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 82% 18%,#fff 0 1px,transparent 2px),
+  linear-gradient(180deg,#fffafcf5 0%,#fff5f8f2 72%,#f1e8eff5 100%);
+ background-size:95px 80px,125px 100px,auto;
+}
+.panel:before,.rewardbox:before,.mini:before,.menuday:before,.reward:before{
+ content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:48px;opacity:.24;
+ background:
+  linear-gradient(0deg,#fff 0 9px,transparent 9px),
+  linear-gradient(90deg,transparent 0 3%,#d7b5c4 3% 12%,transparent 12% 15%,#e5bdc9 15% 23%,transparent 23% 26%,#c9bdce 26% 35%,transparent 35% 39%,#e7c1cc 39% 49%,transparent 49% 53%,#cbbdcd 53% 64%,transparent 64% 68%,#e5bac8 68% 78%,transparent 78% 82%,#d1bdcb 82% 92%,transparent 92%);
+ clip-path:polygon(0 36%,8% 36%,8% 0,17% 0,17% 40%,27% 40%,27% 12%,36% 12%,36% 35%,46% 35%,46% 0,56% 0,56% 42%,66% 42%,66% 14%,75% 14%,75% 0,85% 0,85% 36%,94% 36%,94% 9%,100% 9%,100% 100%,0 100%);
+ pointer-events:none
+}
+.panel>* ,.rewardbox>* ,.mini>* ,.menuday>* ,.reward>*{position:relative;z-index:1}
+.panel h2{color:#40516c;text-shadow:0 1px #fff}
+.panel .sub,.panel .note{color:#78839a}
+input,select,textarea{background:#fffdfdf0}
+.task,.habit,.shopitem,.win,.reminder-row{position:relative;z-index:1}
+.navbtn{background:linear-gradient(145deg,#fffafcf2,#f2e3ebf2)}
+.navbtn.active{background:linear-gradient(135deg,#527b68,#304f48)}
+/* snow caps on the top navigation icons */
+.navbtn:after{content:"❄";font-size:10px;right:5px;top:0;color:#8eaccb;text-shadow:0 1px 3px #fff}
+/* remove the previous fake pink skyline that crossed the hero text */
+@media(max-width:800px){
+ .hero{min-height:250px;align-items:flex-start}
+ .hero>div:first-of-type{max-width:calc(100% - 82px)}
+ .hero h1{font-size:27px;line-height:1.18}
+ .hero p{font-size:14px;max-width:100%}
+ .hero-art{align-self:flex-end;position:absolute;right:12px;bottom:18px;width:80px;height:85px}
+ .hero-art:after{font-size:66px}
+ .panel{padding-bottom:58px}
+}
+
 </style>
 </head>
 <body>
