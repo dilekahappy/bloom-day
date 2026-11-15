@@ -21,6 +21,107 @@ nav{display:flex;gap:8px;overflow-x:auto;padding:15px 1px 5px;scrollbar-width:th
 @keyframes fall{to{transform:translateY(110vh) rotate(180deg)}}@keyframes petFloat{50%{transform:translateY(-8px) rotate(-4deg)}}@keyframes celebrate{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-20px) rotate(-12deg)}50%{transform:translateY(0) rotate(12deg)}75%{transform:translateY(-12px) rotate(-8deg)}}@keyframes pop{0%{opacity:0;transform:translateY(10px) scale(.4)}30%{opacity:1;transform:translateY(-20px) scale(1.25)}100%{opacity:0;transform:translateY(-95px) scale(.8)}}@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:800px){.grid{grid-template-columns:1fr}.add{grid-template-columns:1fr 1fr}.add input:first-child{grid-column:1/-1}.add input[type=date]{grid-column:1/-1}.hero{padding:22px}.hero h1{font-size:30px}.hero-art{font-size:49px}.wrap{padding:16px 13px 40px}.panel{padding:17px}.week{gap:3px}.day{font-size:9px;padding:8px 1px}.day b{font-size:14px}.pet{font-size:36px}}
 .launch-screen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#fff 0,#fff7fa 42%,#f2dce6 100%);transition:opacity .55s ease,visibility .55s ease}.launch-screen.hide{opacity:0;visibility:hidden}.launch-card{text-align:center;padding:28px}.launch-bunny{width:150px;height:165px;margin:auto;animation:launchBob 1.8s ease-in-out infinite}.launch-bunny svg{width:100%;height:100%}.launch-title{font:34px Georgia,serif;color:#925c75;margin:8px 0}.launch-sub{font-size:13px;color:#a58b96}.launch-sparkles{color:#c69a75;letter-spacing:9px;margin-bottom:8px}@keyframes launchBob{50%{transform:translateY(-9px) rotate(2deg)}}
+
+/* WINTER WONDERLAND — визуальная тема */
+:root{
+ --pink:#e8a9c0;--deep:#34435f;--pale:#fff1f6;--cream:#fffaf7;
+ --line:#ead9e3;--ink:#46516a;--muted:#8991a7;--green:#527c68;--gold:#e5bd75;
+}
+body{
+ color:var(--ink);
+ background:
+  radial-gradient(ellipse at 50% -10%,#fff8fc 0,transparent 48%),
+  linear-gradient(180deg,#17213b 0,#35435f 270px,#f5e9ee 560px,#fff8f8 100%);
+ background-attachment:fixed;
+}
+.wrap{position:relative}
+.top{padding:9px 14px;border-radius:20px;background:linear-gradient(110deg,#fff8f2ed,#f9e9f1ed);border:1px solid #fff;box-shadow:0 8px 28px #17213b20}
+.brand{color:#40516c;text-shadow:0 2px #fff;font-weight:700}
+.brand span{color:#d88ba9}
+.date{color:#78849c}
+.hero{
+ min-height:235px;padding:34px 32px;border:1px solid #f6dce7;
+ background:
+  radial-gradient(circle at 10% 15%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 30% 28%,#fff9 0 1px,transparent 2px),
+  radial-gradient(circle at 73% 13%,#fff 0 1px,transparent 2px),
+  radial-gradient(circle at 90% 30%,#fff9 0 1px,transparent 2px),
+  linear-gradient(180deg,#202b49 0%,#53617c 56%,#f4dce5 100%);
+ background-size:90px 75px,130px 110px,115px 95px,150px 130px,auto;
+ box-shadow:0 16px 38px #27334d30;
+}
+.hero:before{
+ content:"";position:absolute;inset:auto 0 0;height:43%;
+ background:
+  linear-gradient(90deg,transparent 0 3%,#e7b7c5 3% 9%,transparent 9% 12%,#f3cbd4 12% 19%,transparent 19% 23%,#d9b8c7 23% 31%,transparent 31% 36%,#f1c8d4 36% 43%,transparent 43% 48%,#d7bdca 48% 56%,transparent 56% 61%,#edc5d1 61% 69%,transparent 69% 74%,#d9b8c7 74% 82%,transparent 82% 87%,#f0c8d5 87% 95%,transparent 95%),
+  linear-gradient(0deg,#f8e9ed 0 14%,transparent 14%);
+ clip-path:polygon(0 25%,7% 25%,7% 0,17% 0,17% 35%,25% 35%,25% 10%,34% 10%,34% 29%,43% 29%,43% 0,53% 0,53% 35%,63% 35%,63% 12%,72% 12%,72% 0,82% 0,82% 28%,91% 28%,91% 8%,100% 8%,100% 100%,0 100%);
+ opacity:.95;pointer-events:none
+}
+.hero:after{
+ content:"✦     ·       ✧       ·      ✦";position:absolute;right:20px;bottom:16px;
+ color:#ffe4a7;font-size:20px;letter-spacing:12px;text-shadow:0 0 12px #ffd88b;
+}
+.hero h1{color:#fff8f6;text-shadow:0 2px 12px #18233b80}
+.hero p{color:#fff0f3;max-width:510px}
+.hero .eyebrow{color:#f7d4e1}
+.hero .holidaylights{color:#ffe3a4;text-shadow:0 0 12px #f8ca70}
+.hero .garland{color:#ffe4b1}
+.hero-art{position:relative;z-index:1}
+.hero-art svg{display:none}
+.hero-art:after{content:"🎄";font-size:104px;filter:drop-shadow(0 0 18px #ffdf9b);animation:treeGlow 3s ease-in-out infinite}
+@keyframes treeGlow{50%{filter:drop-shadow(0 0 25px #ffe7a8) brightness(1.12)}}
+.pet{display:none}
+nav{padding:16px 2px 8px}
+.navbtn{
+ position:relative;overflow:hidden;background:linear-gradient(145deg,#fffafd,#f5e5ec);
+ color:#59647e;border:1px solid #ead3df;border-radius:16px;
+ box-shadow:0 4px 10px #27334d12;padding:11px 15px
+}
+.navbtn:after{content:"❄";position:absolute;right:5px;top:1px;font-size:9px;color:#9db5ce;opacity:.8}
+.navbtn.active{background:linear-gradient(135deg,#486d60,#304c49);color:#fff8f4;border-color:#527b6d;box-shadow:0 6px 16px #294d4540}
+.panel{
+ background:linear-gradient(145deg,#fffdfbfa,#fff5f8fa);
+ border:1px solid #ead8e1;border-radius:22px;
+ box-shadow:0 9px 25px #39445c12
+}
+.panel h2{color:#40516c}
+.sub,.note{color:#8b91a5}
+input,select,textarea{background:#fffafd;border-color:#ead9e3;color:#48536b}
+input:focus,select:focus,textarea:focus{border-color:#d99ab3;box-shadow:0 0 0 3px #e8b7ca30}
+button{background:linear-gradient(135deg,#527b68,#3e6658);box-shadow:0 4px 10px #315d4b20}
+button.secondary{background:#f8e8ef;color:#75566c;box-shadow:none}
+button.small{box-shadow:none}
+.task,.habit,.shopitem,.win,.reminder-row{border-color:#f0e4e9}
+.tag{background:#eaf1eb;color:#52735f}
+.progress{background:#f3e5eb}
+.progress i{background:linear-gradient(90deg,#5d8b70,#e6a9bf,#edc77f)}
+.mini,.day,.menuday{background:linear-gradient(145deg,#fff9fb,#f2f5f0);border-color:#e8dce3}
+.day{color:#758097}
+.day b{color:#425773}
+.day.selected{background:linear-gradient(135deg,#527b68,#3d6258);border-color:#527b68}
+.day.selected b{color:#fff}
+.mood{background:#fff3f7;color:#80647a}
+.mood.selected{background:#e8c4d2;border-color:#d99ab3}
+.rewardbox{background:linear-gradient(135deg,#fff3df,#fff9f2);border-color:#ead7b7}
+.reward{background:#fffaf2;border-color:#eadfcf}
+.badgewin{background:#f7e9ee;color:#94647a}
+.christmas{border-color:#f2d8e2}
+.footer{color:#8d8297}
+.snow{color:#fff;text-shadow:0 0 7px #d9e8ff,0 0 14px #fff}
+.launch-screen{background:radial-gradient(circle at 50% 28%,#fff9fc 0,#f6e5ed 45%,#26344f 100%)}
+.launch-bunny{display:none}
+.launch-card:before{content:"🎄";display:block;font-size:88px;filter:drop-shadow(0 0 18px #ffe5a6);animation:treeGlow 3s ease-in-out infinite}
+.launch-title{color:#40516c}
+.launch-sub{color:#78849b}
+@media(max-width:800px){
+ .hero{min-height:220px;padding:24px 20px}
+ .hero-art{width:90px;height:100px;flex:0 0 90px}
+ .hero-art:after{font-size:70px}
+ .hero h1{font-size:28px}
+ .top{padding:8px 11px}
+}
+
 </style>
 </head>
 <body>
