@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "Bloom Day — уютный планировщик",
+  "short_name": "Bloom Day",
+  "description": "Твой уютный планировщик с зимним настроением, привычками и маленькими победами.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff4f8",
+  "theme_color": "#f8e8ef",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
