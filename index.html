@@ -22,6 +22,8 @@ nav{display:flex;gap:8px;overflow-x:auto;padding:15px 1px 5px;scrollbar-width:th
 @media(max-width:800px){.grid{grid-template-columns:1fr}.add{grid-template-columns:1fr 1fr}.add input:first-child{grid-column:1/-1}.add input[type=date]{grid-column:1/-1}.hero{padding:22px}.hero h1{font-size:30px}.hero-art{font-size:49px}.wrap{padding:16px 13px 40px}.panel{padding:17px}.week{gap:3px}.day{font-size:9px;padding:8px 1px}.day b{font-size:14px}.pet{font-size:36px}}
 .launch-screen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#fff 0,#fff7fa 42%,#f2dce6 100%);transition:opacity .55s ease,visibility .55s ease}.launch-screen.hide{opacity:0;visibility:hidden}.launch-card{text-align:center;padding:28px}.launch-bunny{width:150px;height:165px;margin:auto;animation:launchBob 1.8s ease-in-out infinite}.launch-bunny svg{width:100%;height:100%}.launch-title{font:34px Georgia,serif;color:#925c75;margin:8px 0}.launch-sub{font-size:13px;color:#a58b96}.launch-sparkles{color:#c69a75;letter-spacing:9px;margin-bottom:8px}@keyframes launchBob{50%{transform:translateY(-9px) rotate(2deg)}}
 
+/* Fix: do not let the decorative launch overlay block the app */
+.launch-screen{display:none!important}
 /* WINTER WONDERLAND — визуальная тема */
 :root{
  --pink:#e8a9c0;--deep:#34435f;--pale:#fff1f6;--cream:#fffaf7;
