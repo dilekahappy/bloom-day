@@ -24,6 +24,18 @@ nav{display:flex;gap:8px;overflow-x:auto;padding:15px 1px 5px;scrollbar-width:th
 
 
 /* Bloom Day: interaction and reference polish */
+
+/* Remove decorative skyline bars that covered the heading and task text */
+.hero:before{display:none!important}
+.hero:after{display:none!important}
+.hero{background:
+ radial-gradient(circle at 12% 12%,#fff 0 1px,transparent 2px),
+ radial-gradient(circle at 33% 24%,#fff9 0 1px,transparent 2px),
+ radial-gradient(circle at 76% 18%,#fff 0 1px,transparent 2px),
+ radial-gradient(ellipse at 82% 75%,#f4c5bd 0,transparent 28%),
+ linear-gradient(180deg,#111b32 0%,#25334e 58%,#6e5b70 100%)!important;
+ background-size:100px 90px,130px 120px,160px 110px,auto,auto!important}
+
 html{scroll-behavior:smooth}
 body{background:
  radial-gradient(ellipse at 50% 5%,#273653 0,#17223b 42%,#26334d 65%,#dfc4d0 100%) fixed!important}
@@ -31,7 +43,7 @@ body{background:
  background:
  radial-gradient(ellipse at 82% 74%,#f8d4c7aa 0,transparent 25%),
  linear-gradient(180deg,#111b32bb 0%,#1e2c49a8 52%,#26334b88 100%),
- url('https://images.unsplash.com/photo- winter-city-placeholder') center/cover!important;
+ radial-gradient(ellipse at 78% 65%,#f5c7c4 0,transparent 24%),linear-gradient(180deg,#14213c 0%,#263650 52%,#b78e9e 100%)!important;
  border:1px solid #f8dce9!important;box-shadow:0 12px 32px #08132766!important}
 .hero-copy{position:relative;z-index:2;max-width:70%!important}
 .hero h1{font-size:clamp(34px,8vw,52px)!important;line-height:1.02!important;max-width:none!important;color:#fff5f2!important;text-shadow:0 2px 12px #10172b!important}
