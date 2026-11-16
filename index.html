@@ -702,6 +702,70 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
  .quickbtn .quickart:before{left:-7px;right:-7px;height:12px;top:-9px}
 }
 
+
+/* FINAL TASK CARD: text on the left, uploaded lantern artwork on the right */
+#home .grid>.panel:first-child{
+  background-color:#f0d8e3!important;
+  background-image:
+    linear-gradient(90deg,rgba(246,224,234,.99) 0%,rgba(246,224,234,.97) 57%,rgba(246,224,234,.08) 76%,rgba(246,224,234,0) 100%),
+    url("./lantern-side.png?v=20261116-5")!important;
+  background-repeat:no-repeat!important;
+  background-position:center center,right 1% center!important;
+  background-size:100% 100%,39% auto!important;
+}
+#home .grid>.panel:first-child:before{display:none!important;background:none!important}
+#home .grid>.panel:first-child:after{content:none!important;display:none!important}
+#home .grid>.panel:first-child h2,
+#home .grid>.panel:first-child .sub,
+#home .grid>.panel:first-child #taskForm,
+#home .grid>.panel:first-child .stat,
+#home .grid>.panel:first-child .progress,
+#home .grid>.panel:first-child #tasks{
+  position:relative!important;z-index:2!important;max-width:67%!important
+}
+#home .grid>.panel:first-child #taskForm{
+  grid-template-columns:minmax(0,1fr) minmax(110px, .42fr)!important;
+}
+#home .grid>.panel:first-child #taskInput,
+#home .grid>.panel:first-child .task-date{grid-column:1/-1!important}
+#home .grid>.panel:first-child #taskForm button{grid-column:1/-1!important}
+.quickbtn .quickart{
+  position:relative!important;display:inline-block!important;
+  padding-top:8px!important;line-height:1.1!important;
+}
+.quickbtn .quickart:before,
+.bottomnav .navbtn span:before{
+  content:""!important;display:block!important;position:absolute!important;
+  left:50%!important;top:-2px!important;transform:translateX(-50%)!important;
+  width:52px!important;height:17px!important;z-index:5!important;
+  background:
+   radial-gradient(ellipse at 17% 75%,#fff 0 35%,transparent 38%),
+   radial-gradient(ellipse at 39% 43%,#fff 0 42%,transparent 45%),
+   radial-gradient(ellipse at 63% 62%,#fff 0 40%,transparent 43%),
+   radial-gradient(ellipse at 84% 78%,#fff 0 31%,transparent 34%)!important;
+  filter:drop-shadow(0 2px 2px rgba(89,77,104,.25))!important;
+  pointer-events:none!important;
+}
+.bottomnav .navbtn span{position:relative!important;padding-top:8px!important}
+@media(max-width:800px){
+ #home .grid>.panel:first-child{
+  background-image:
+   linear-gradient(180deg,rgba(246,224,234,.99) 0%,rgba(246,224,234,.98) 58%,rgba(246,224,234,.20) 100%),
+   url("./lantern-side.png?v=20261116-5")!important;
+  background-position:center center,right bottom!important;
+  background-size:100% 100%,48% auto!important;
+ }
+ #home .grid>.panel:first-child h2,
+ #home .grid>.panel:first-child .sub,
+ #home .grid>.panel:first-child #taskForm,
+ #home .grid>.panel:first-child .stat,
+ #home .grid>.panel:first-child .progress,
+ #home .grid>.panel:first-child #tasks{max-width:100%!important}
+ #home .grid>.panel:first-child #tasks{padding-bottom:125px!important}
+ #home .grid>.panel:first-child #taskForm{grid-template-columns:1fr 1fr!important}
+ .quickbtn .quickart:before,.bottomnav .navbtn span:before{width:43px!important;height:14px!important}
+}
+
 </style>
 </head>
 <body>
