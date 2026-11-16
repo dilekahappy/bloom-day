@@ -804,6 +804,11 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 #homeTimer{display:block!important}
 #homeTimer button{cursor:pointer!important;pointer-events:auto!important;position:relative!important;z-index:5!important}
 </style>
+<style id="bloom-final-layout-fix">
+#quickgrid{display:flex!important;flex-flow:row nowrap!important;align-items:stretch!important;gap:8px!important;width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch;scrollbar-width:thin;touch-action:pan-x}
+#quickgrid>.quickbtn{flex:0 0 112px!important;width:112px!important;min-width:112px!important;max-width:112px!important;min-height:88px!important}
+#quickgrid>.quickbtn span{pointer-events:none}
+</style>
 </head>
 <body>
 <div class="launch-screen" id="launchScreen" aria-label="Bloom Day загружается"><div class="launch-card"><div class="launch-sparkles">✧ ❄ ✧</div><div class="launch-bunny"><svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"><ellipse cx="42" cy="28" rx="13" ry="29" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(-13 42 28)"/><ellipse cx="78" cy="25" rx="13" ry="30" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(12 78 25)"/><ellipse cx="42" cy="27" rx="6" ry="21" fill="#e9aebc"/><ellipse cx="78" cy="24" rx="6" ry="22" fill="#e9aebc"/><ellipse cx="60" cy="79" rx="40" ry="39" fill="#fff7ed" stroke="#d9c4b8" stroke-width="2"/><ellipse cx="46" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="74" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="60" cy="88" rx="5" ry="3.5" fill="#d98eaa"/><path d="M60 91q-7 8-13 1m13-1q7 8 13 1" fill="none" stroke="#98717c" stroke-width="1.8" stroke-linecap="round"/><path d="M27 111q33 15 66 0l-6 17H34z" fill="#b85d69"/><path d="M30 111q30 13 60 0" fill="none" stroke="#e6b96e" stroke-width="4"/><path d="M60 113l-9 11 9 6 9-6z" fill="#f1d18d"/></svg></div><div class="launch-title">Bloom Day</div><div class="launch-sub">Немного зимней магии для твоего дня ♡</div></div></div>
@@ -962,27 +967,3 @@ renderTasks();renderWeek();renderHabits();renderMood();renderMenu();renderRecurr
 window.addEventListener('load',()=>setTimeout(()=>$('launchScreen')?.classList.add('hide'),650));
 </script>
 </body></html>
-
-<style id="bloom-final-layout-fix">
-/* Keep every home shortcut in one horizontal row */
-#quickgrid{
- display:flex!important;
- flex-flow:row nowrap!important;
- align-items:stretch!important;
- gap:8px!important;
- width:100%!important;
- overflow-x:auto!important;
- overflow-y:hidden!important;
- -webkit-overflow-scrolling:touch;
- scrollbar-width:thin;
-}
-#quickgrid>.quickbtn{
- flex:0 0 112px!important;
- width:112px!important;
- min-width:112px!important;
- max-width:112px!important;
- min-height:88px!important;
-}
-#quickgrid>.quickbtn span{pointer-events:none}
-#quickgrid{touch-action:pan-x}
-</style>
