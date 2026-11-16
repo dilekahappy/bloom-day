@@ -628,6 +628,80 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
   #home>.grid>.panel:before{width:56%!important;height:42%!important;opacity:.68!important;background-position:center 60%!important}
 }
 
+
+/* SIDE ILLUSTRATION + SNOW-CAPPED SHORTCUT TILES */
+#home .grid>.panel:first-child{
+  position:relative!important;
+  overflow:hidden!important;
+  background:linear-gradient(110deg,#f7e6ee 0%,#f2dce7 62%,#e9cbd9 100%)!important;
+}
+#home .grid>.panel:first-child:after{
+  content:"🎁\\A🌲\\A🏮\\A☕";
+  white-space:pre;
+  position:absolute!important;
+  z-index:0!important;
+  right:2%!important;
+  bottom:5%!important;
+  width:34%!important;
+  height:75%!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+  text-align:center!important;
+  font-size:clamp(34px,8vw,72px)!important;
+  line-height:1.12!important;
+  letter-spacing:-5px!important;
+  filter:drop-shadow(0 7px 8px rgba(103,59,83,.22))!important;
+  opacity:.96!important;
+  pointer-events:none!important;
+}
+#home .grid>.panel:first-child>*{position:relative!important;z-index:1!important}
+#home .grid>.panel:first-child h2,
+#home .grid>.panel:first-child .sub{max-width:76%!important}
+#home .grid>.panel:first-child #tasks{max-width:72%!important}
+.quickbtn{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+.quickbtn .quickart{
+  position:relative!important;
+  display:inline-grid!important;
+  place-items:center!important;
+  margin-top:9px!important;
+}
+.quickbtn .quickart:before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:-9px;
+  right:-9px;
+  top:-11px;
+  height:14px;
+  background:linear-gradient(180deg,#fff 0%,#fffdfd 65%,#eaf2f8 100%);
+  border-radius:55% 48% 42% 38%;
+  box-shadow:0 2px 3px rgba(118,132,158,.22);
+  clip-path:polygon(0 65%,10% 35%,20% 50%,30% 12%,42% 42%,55% 0,68% 42%,80% 18%,91% 48%,100% 30%,100% 100%,0 100%);
+  pointer-events:none;
+}
+.quickbtn:after{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;height:8px;
+  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,0));
+  pointer-events:none;
+}
+@media(max-width:800px){
+ #home .grid>.panel:first-child:after{
+   right:0!important;bottom:4%!important;width:35%!important;height:54%!important;
+   font-size:clamp(35px,10vw,58px)!important;
+ }
+ #home .grid>.panel:first-child h2,
+ #home .grid>.panel:first-child .sub{max-width:100%!important}
+ #home .grid>.panel:first-child #tasks{max-width:100%!important}
+ .quickbtn .quickart:before{left:-7px;right:-7px;height:12px;top:-9px}
+}
+
 </style>
 </head>
 <body>
