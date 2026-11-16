@@ -893,8 +893,8 @@ body:before{opacity:.18!important;background:radial-gradient(circle at 12% 18%,#
 /* Bring the existing illustrated town back behind the Bloom Day header */
 .top{
  position:relative!important;isolation:isolate!important;overflow:hidden!important;
- background-image:linear-gradient(180deg,rgba(20,31,53,.20) 0%,rgba(25,35,57,.30) 48%,rgba(29,39,59,.48) 100%),url("./winter-city.svg?v=20261116-3")!important;
- background-size:112% auto!important;background-position:center 54%!important;background-repeat:no-repeat!important;
+ background-image:linear-gradient(180deg,rgba(20,31,53,.20) 0%,rgba(25,35,57,.30) 48%,rgba(29,39,59,.48) 100%),url("./town-header.jpg")!important;
+ background-size:cover!important;background-position:center 58%!important;background-repeat:no-repeat!important;
  border:1px solid rgba(255,244,249,.92)!important;
  box-shadow:0 8px 24px rgba(28,30,53,.18)!important;
 }
@@ -905,10 +905,18 @@ body:before{opacity:.18!important;background:radial-gradient(circle at 12% 18%,#
 .top .daily-quote{font-weight:500!important}
 .top .topicon{background:rgba(255,248,251,.88)!important;color:#35445f!important;border-color:rgba(255,255,255,.9)!important}
 .top .bell-toggle.enabled{background:linear-gradient(145deg,#315e50,#1f4b40)!important;color:#fff!important}
+
+/* FINAL FIX: enlarge the whole header frame, not the zoom of the picture */
+.top{min-height:285px!important;box-sizing:border-box!important;padding:18px 14px!important;grid-template-rows:auto auto auto!important;background-size:cover!important;background-position:center 58%!important}
+.top .date{margin-top:10px!important}.top .daily-quote{margin-top:8px!important;max-width:92%!important}
+@media(max-width:600px){.top{min-height:285px!important;padding:16px 12px 18px!important;background-size:cover!important;background-position:center 58%!important}.top .date{margin-top:8px!important}.top .daily-quote{margin-top:7px!important}}
+/* Remove floating snow, sparkles and decorative overlays */
+#snowfield,.snow,.launch-sparkles,body:before,.flowerpop{display:none!important;content:none!important;animation:none!important}
+
 </style></head>
 <body>
 <div class="launch-screen" id="launchScreen" aria-label="Bloom Day загружается"><div class="launch-card"><div class="launch-sparkles">✧ ❄ ✧</div><div class="launch-bunny"><svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"><ellipse cx="42" cy="28" rx="13" ry="29" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(-13 42 28)"/><ellipse cx="78" cy="25" rx="13" ry="30" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(12 78 25)"/><ellipse cx="42" cy="27" rx="6" ry="21" fill="#e9aebc"/><ellipse cx="78" cy="24" rx="6" ry="22" fill="#e9aebc"/><ellipse cx="60" cy="79" rx="40" ry="39" fill="#fff7ed" stroke="#d9c4b8" stroke-width="2"/><ellipse cx="46" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="74" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="60" cy="88" rx="5" ry="3.5" fill="#d98eaa"/><path d="M60 91q-7 8-13 1m13-1q7 8 13 1" fill="none" stroke="#98717c" stroke-width="1.8" stroke-linecap="round"/><path d="M27 111q33 15 66 0l-6 17H34z" fill="#b85d69"/><path d="M30 111q30 13 60 0" fill="none" stroke="#e6b96e" stroke-width="4"/><path d="M60 113l-9 11 9 6 9-6z" fill="#f1d18d"/></svg></div><div class="launch-title">Bloom Day</div><div class="launch-sub">Немного зимней магии для твоего дня ♡</div></div></div>
-<div id="snowfield"></div><div class="pet" id="pet" aria-hidden="true"></div><div class="friend" aria-hidden="true">🐻‍❄️</div>
+<div class="pet" id="pet" aria-hidden="true"></div><div class="friend" aria-hidden="true">🐻‍❄️</div>
 <main class="wrap">
 <header class="top">
 <button class="topicon" id="openShortcuts" aria-label="Открыть разделы">☰</button>
@@ -1033,7 +1041,7 @@ $('notify').onclick=async()=>{
 };let notified=new Set();function checkReminders(){if(!notificationsEnabled||!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date(),hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0'),clock=hh+':'+mm;tasks.forEach((t,i)=>{const key=t.date+':'+i+':'+t.time;if(taskDate(t)===todayKey&&t.time===clock&&!t.done&&!notified.has(key)){new Notification('Bloom Day 🌸',{body:'Пора уделить немного времени: '+t.title});notified.add(key)}});recurring.forEach(r=>{const key=todayKey+':'+r.id;if(r.time===clock&&r.days.includes(now.getDay())&&!notified.has(key)){new Notification('Bloom Day 🎄',{body:r.title});notified.add(key)}})}setInterval(checkReminders,15000);
 function renderTimerTasks(){const sel=$('timerTask');if(!sel)return;const keep=sel.value;sel.innerHTML='<option value="">Выбрать задачу из плана…</option>';tasks.filter(t=>!t.done).forEach(t=>{const o=document.createElement('option');o.value=t.title;o.textContent=t.title;sel.append(o)});if([...sel.options].some(o=>o.value===keep))sel.value=keep}
 function showClock(){const m=Math.floor(timerLeft/60),s=timerLeft%60;$('clock').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}$('timerStart').onclick=()=>{const timerTaskName=$('timerCustomTask').value.trim()||$('timerTask').value;if(!timerId&&timerTaskName)$('timerMessage').textContent='Сейчас занимаемся: '+timerTaskName+' ♡';if(timerId){clearInterval(timerId);timerId=null;$('timerStart').textContent='Продолжить';return}$('timerStart').textContent='Пауза';timerId=setInterval(()=>{timerLeft--;showClock();if(timerLeft<=0){clearInterval(timerId);timerId=null;$('timerStart').textContent='Начать';$('timerMessage').textContent='Время вышло — сделай небольшой перерыв ☕';celebrate('Ты уделила время своему делу!')}} ,1000)};$('timerReset').onclick=()=>{clearInterval(timerId);timerId=null;timerLeft=1500;$('timerStart').textContent='Начать';$('timerMessage').textContent='Ты можешь сделать паузу в любой момент ♡';showClock()};document.querySelectorAll('.preset').forEach(b=>b.onclick=()=>{clearInterval(timerId);timerId=null;timerLeft=Number(b.dataset.min)*60;$('timerStart').textContent='Начать';showClock()});
-function snow(){const field=$('snowfield');for(let i=0;i<18;i++){const s=document.createElement('span');s.className='snow';s.textContent=['❄','✧','·'][i%3];s.style.left=Math.random()*100+'vw';s.style.animationDuration=(9+Math.random()*12)+'s';s.style.animationDelay=(-Math.random()*18)+'s';s.style.opacity=.35+Math.random()*.55;s.style.fontSize=(8+Math.random()*10)+'px';field.append(s)}}snow();
+
 if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker registration failed',err)));}
 function renderMenu(){const host=$('menuWeek');host.innerHTML='';const week=[
 ['Понедельник',[
