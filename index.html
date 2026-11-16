@@ -794,6 +794,15 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 
 
 #homeTimer{margin-top:16px;scroll-margin-top:20px}#timerTask,#timerCustomTask{width:100%;margin:7px 0}.moods{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important}.mood{font-size:30px!important;min-height:62px!important;border-radius:17px!important;display:flex!important;align-items:center!important;justify-content:center!important}.mood.selected{outline:3px solid #c77f9d!important;transform:translateY(-2px)}.reminder-manager{margin-top:20px;padding:15px!important}.reminder-manager h3{margin:0 0 6px;color:#493343}.reminder-manager p{margin:4px 0 10px}.reminderForm>input{width:100%;margin-bottom:8px}.reminderForm .rowform{display:flex;gap:8px;align-items:center}.reminderForm .rowform input{flex:1;min-width:0}.reminderForm .repeat-days{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.reminderForm .repeat-days label{display:flex;gap:4px;align-items:center;background:#fff7fa;border-radius:12px;padding:6px 8px}.reminder-manager .reminder-row{display:flex;gap:8px;align-items:center}#goTimer{margin:14px 0}.mealidea{padding:7px 0;border-bottom:1px solid #ead9e3}.mealidea strong{display:block;color:#6c455a}.mealidea small{display:block;color:#8c7c88;font-size:12px;margin-top:3px}@media(max-width:800px){.moods{grid-template-columns:repeat(4,minmax(0,1fr))!important}.mood{font-size:28px!important;min-height:58px!important}}
+
+/* Navigation and timer reliability patch */
+.quickgrid{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;gap:10px!important;align-items:stretch!important;justify-content:flex-start!important;padding:10px!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:thin!important}
+.quickgrid .quickbtn{flex:0 0 108px!important;min-width:108px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important}
+.quickgrid .quickbtn span{pointer-events:none!important}
+.quickgrid button{cursor:pointer!important}
+.view{position:relative}
+#homeTimer{display:block!important}
+#homeTimer button{cursor:pointer!important;pointer-events:auto!important;position:relative!important;z-index:5!important}
 </style>
 </head>
 <body>
@@ -948,6 +957,62 @@ function renderMenu(){const host=$('menuWeek');host.innerHTML='';const week=[
 const labels=['Завтрак','Обед','Ужин','Полдник','Перекус'];
 week.forEach(([day,meals])=>{const card=document.createElement('div');card.className='menuday';const h=document.createElement('b');h.textContent=day;card.append(h);meals.forEach(([meal,composition],i)=>{const line=document.createElement('div');line.className='mealidea';const title=document.createElement('strong');title.textContent=labels[i]+': '+meal;const ing=document.createElement('small');ing.textContent='Состав: '+composition;line.append(title,ing);card.append(line)});host.append(card)})}
 renderTasks();renderWeek();renderHabits();renderMood();renderMenu();renderRecurring();showClock();renderTimerTasks();
+
+/* Reliable delegated navigation and timer controls */
+document.addEventListener('click',function(e){
+ const nav=e.target.closest('.quickbtn,.navbtn,[data-view]');
+ if(nav){
+  const target=nav.dataset.view;
+  if(target && document.getElementById(target)){
+   e.preventDefault();
+   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===target));
+   document.querySelectorAll('.quickbtn,.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.view===target));
+   if(target==='calendar')renderWeek();
+   if(target==='home')renderTimerTasks();
+   if(target==='home')window.scrollTo({top:0,behavior:'smooth'});
+   return;
+  }
+ }
+ if(e.target.closest('#goTimer')){
+  e.preventDefault();
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='home'));
+  renderTimerTasks();
+  document.getElementById('homeTimer').scrollIntoView({behavior:'smooth'});
+  return;
+ }
+ const preset=e.target.closest('.preset');
+ if(preset){
+  e.preventDefault();
+  if(timerId){clearInterval(timerId);timerId=null}
+  timerLeft=Number(preset.dataset.min)*60;
+  const start=document.getElementById('timerStart');
+  if(start)start.textContent='Начать';
+  showClock();
+  return;
+ }
+ if(e.target.closest('#timerStart')){
+  e.preventDefault();
+  const start=document.getElementById('timerStart');
+  if(timerId){clearInterval(timerId);timerId=null;start.textContent='Продолжить';return}
+  const task=(document.getElementById('timerCustomTask')?.value||'').trim()||document.getElementById('timerTask')?.value||'';
+  if(task)document.getElementById('timerMessage').textContent='Сейчас занимаемся: '+task+' ♡';
+  start.textContent='Пауза';
+  timerId=setInterval(()=>{
+   timerLeft--;showClock();
+   if(timerLeft<=0){clearInterval(timerId);timerId=null;start.textContent='Начать';document.getElementById('timerMessage').textContent='Время вышло — сделай небольшой перерыв ☕';celebrate('Ты уделила время своему делу!')}
+  },1000);
+  return;
+ }
+ if(e.target.closest('#timerReset')){
+  e.preventDefault();
+  if(timerId)clearInterval(timerId);
+  timerId=null;timerLeft=1500;
+  document.getElementById('timerStart').textContent='Начать';
+  document.getElementById('timerMessage').textContent='Ты можешь сделать паузу в любой момент ♡';
+  showClock();
+ }
+},true);
+
 window.addEventListener('load',()=>setTimeout(()=>$('launchScreen')?.classList.add('hide'),650));
 </script>
 </body></html>
