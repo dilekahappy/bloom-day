@@ -1,53 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560">
-<defs>
- <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#101d39"/><stop offset=".62" stop-color="#273a5a"/><stop offset="1" stop-color="#68576e"/></linearGradient>
- <linearGradient id="snow" x2="0" y2="1"><stop stop-color="#fff8f4"/><stop offset="1" stop-color="#d9b8cb"/></linearGradient>
- <linearGradient id="pink" x2="0" y2="1"><stop stop-color="#f5c4d1"/><stop offset="1" stop-color="#bd819e"/></linearGradient>
- <radialGradient id="glow"><stop stop-color="#ffe5a0" stop-opacity=".8"/><stop offset="1" stop-color="#ffe5a0" stop-opacity="0"/></radialGradient>
-</defs>
-<rect width="1000" height="560" fill="url(#sky)"/>
-<g fill="#fff" opacity=".9">
- <circle cx="60" cy="40" r="2"/><circle cx="140" cy="90" r="1.8"/><circle cx="250" cy="30" r="2"/><circle cx="370" cy="82" r="1.5"/><circle cx="480" cy="35" r="2"/><circle cx="610" cy="75" r="1.5"/><circle cx="740" cy="30" r="2"/><circle cx="870" cy="80" r="1.8"/><circle cx="950" cy="32" r="2"/>
-</g>
-<g fill="#f6cbd7" stroke="#f9e4e9" stroke-width="4">
- <path d="M0 310V190h70v-48h100v168z"/><path d="M135 310V160h80v-42h100v192z"/>
- <path d="M690 310V170h75v-55h105v195z"/><path d="M830 310V145h70v-50h100v215z"/>
-</g>
-<g fill="#ffd98d">
- <path d="M25 205h17v24H25zm45-45h17v24H70zm65 42h17v24h-17zm75-52h17v24h-17zm55 52h17v24h-17zm460-10h17v24h-17zm70-42h17v24h-17zm70 45h17v24h-17zm80-65h17v24h-17z"/>
-</g>
-<g fill="#263a58" stroke="#f7d9e3" stroke-width="3">
- <path d="M290 315V190h48v-50h50v-30h42v205z"/><path d="M420 315V155h44v-65h55v225z"/><path d="M530 315V185h55v-90h54v220z"/>
-</g>
-<g fill="#ffdc91">
- <path d="M305 220h12v18h-12zm30-45h12v18h-12zm47 55h12v18h-12zm48-52h12v18h-12zm54-62h12v18h-12zm45 85h12v18h-12zm45-75h12v18h-12zm45 80h12v18h-12z"/>
-</g>
-<circle cx="545" cy="345" r="165" fill="url(#glow)"/>
-<g transform="translate(545 260)">
- <path d="M0-100L-26-55H-9L-42-12H-19L-58 34H58L19-12H42L9-55H26Z" fill="#17634c" stroke="#0e493c" stroke-width="4"/>
- <path d="M0-100L-26-55H-9L-42-12H-19L-58 34H58L19-12H42L9-55H26Z" fill="none" stroke="#5da77b" stroke-width="5"/>
- <rect x="-8" y="32" width="16" height="30" rx="3" fill="#76503b"/>
- <path d="M0-116l-9 18h18z" fill="#ffd76f"/><circle cx="0" cy="-116" r="8" fill="#fff2a7"/>
- <g fill="#f3a2b9" stroke="#fbe2a5" stroke-width="2"><circle cx="-24" cy="-40" r="7"/><circle cx="25" cy="-18" r="7"/><circle cx="-8" cy="8" r="7"/><circle cx="37" cy="18" r="6"/><circle cx="-38" cy="23" r="6"/></g>
-</g>
-<g transform="translate(790 320)">
- <ellipse cx="0" cy="40" rx="135" ry="17" fill="#f8e5eb" opacity=".65"/>
- <path d="M-118 10Q0-45 118 10L105 38H-105Z" fill="#f1c0d0" stroke="#fff0f2" stroke-width="5"/>
- <path d="M-118 10Q0-45 118 10" fill="none" stroke="#ffe5a4" stroke-width="7"/>
- <path d="M-90 12V42M-45-3V42M0-12V42M45-3V42M90 12V42" stroke="#fff4e9" stroke-width="5"/>
- <path d="M-130 8L0-65 130 8" fill="#e99db8" stroke="#fff0f4" stroke-width="5"/>
- <path d="M-130 8L0-65 130 8" fill="none" stroke="#ffdb91" stroke-width="5"/>
- <circle cx="0" cy="-65" r="8" fill="#ffe6a2"/>
-</g>
-<path d="M0 420Q250 365 500 420T1000 420V560H0Z" fill="url(#snow)"/>
-<path d="M300 560Q420 445 590 420Q750 400 1000 470V560Z" fill="#fff8f3" opacity=".85"/>
-<g transform="translate(155 438)">
- <path d="M-70 0Q-60-36-22-36H40Q67-32 78 0Z" fill="#e99ab4" stroke="#fff1ef" stroke-width="5"/>
- <path d="M-40-36L-16-60H34L58-34" fill="#e99ab4" stroke="#fff1ef" stroke-width="5"/>
- <rect x="-12" y="-54" width="35" height="22" rx="4" fill="#a9c8d5"/><circle cx="-42" cy="2" r="14" fill="#26344d" stroke="#fff" stroke-width="5"/><circle cx="48" cy="2" r="14" fill="#26344d" stroke="#fff" stroke-width="5"/>
-</g>
-<g transform="translate(65 350)">
- <path d="M0 70V-5" stroke="#272f46" stroke-width="9"/><path d="M-36-5Q0-65 36-5Z" fill="#29364c" stroke="#f5d6a0" stroke-width="5"/><circle cx="0" cy="-7" r="24" fill="#ffe3a0" opacity=".35"/><path d="M0 2V24" stroke="#ffdc91" stroke-width="8"/>
-</g>
-<g fill="#fff" opacity=".8"><circle cx="90" cy="390" r="4"/><circle cx="230" cy="350" r="3"/><circle cx="365" cy="395" r="4"/><circle cx="650" cy="370" r="3"/><circle cx="920" cy="400" r="4"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760"><defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#101a34"/><stop offset=".58" stop-color="#263653"/><stop offset="1" stop-color="#8a7184"/></linearGradient><linearGradient id="snow" x2="0" y2="1"><stop stop-color="#fff8fb"/><stop offset="1" stop-color="#e9d4e1"/></linearGradient><linearGradient id="gold" x2="0" y2="1"><stop stop-color="#ffe7a0"/><stop offset="1" stop-color="#c78a3c"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><g id="w"><rect width="22" height="32" rx="3" fill="#ffd27d"/><path d="M11 0v32M0 16h22" stroke="#98645a" stroke-width="2"/></g></defs>
+<rect width="1200" height="760" fill="url(#sky)"/><g fill="#fff"><circle cx="70" cy="55" r="2"/><circle cx="190" cy="120" r="2"/><circle cx="350" cy="45" r="2"/><circle cx="530" cy="95" r="2"/><circle cx="710" cy="50" r="2"/><circle cx="900" cy="110" r="2"/><circle cx="1080" cy="50" r="2"/><circle cx="1150" cy="190" r="2"/><circle cx="145" cy="230" r="2"/><circle cx="840" cy="220" r="2"/></g>
+<!-- snowy storybook buildings --> <g stroke="#f9eaf0" stroke-width="8">
+<path d="M0 420V210h95v-75h100v285z" fill="#c982a0"/><path d="M-10 212l155-85 65 85z" fill="#fff1f4"/>
+<path d="M155 420V260h100V110h115v310z" fill="#e7a9bd"/><path d="M145 265l165-175 85 175z" fill="#fff4f5"/>
+<path d="M320 420V230h100V95h115v325z" fill="#b5a1b8"/><path d="M310 235l130-155 105 155z" fill="#fff"/>
+<path d="M820 420V245h100V100h115v320z" fill="#d99bb2"/><path d="M810 250l155-175 85 175z" fill="#fff0f4"/>
+<path d="M1010 420V210h90v-75h100v285z" fill="#df9db5"/><path d="M1000 215l145-90 65 90z" fill="#fff2f5"/></g>
+<g><use href="#w" x="28" y="260"/><use href="#w" x="90" y="260"/><use href="#w" x="28" y="325"/><use href="#w" x="90" y="325"/><use href="#w" x="190" y="285"/><use href="#w" x="255" y="285"/><use href="#w" x="190" y="350"/><use href="#w" x="255" y="350"/><use href="#w" x="365" y="250"/><use href="#w" x="430" y="250"/><use href="#w" x="365" y="320"/><use href="#w" x="430" y="320"/><use href="#w" x="865" y="270"/><use href="#w" x="930" y="270"/><use href="#w" x="865" y="340"/><use href="#w" x="930" y="340"/><use href="#w" x="1050" y="265"/><use href="#w" x="1120" y="265"/></g>
+<path d="M0 445q170-65 340 0t340 0 520 0v315H0z" fill="url(#snow)"/>
+<!-- glowing town Christmas tree --> <g transform="translate(710 270)"><circle cy="185" r="185" fill="#ffcf77" opacity=".2" filter="url(#glow)"/><path d="M0 0L-92 145H92z" fill="#176047" stroke="#a8d4ad" stroke-width="6"/><path d="M0 65L-125 230H125z" fill="#1c704f" stroke="#a8d4ad" stroke-width="6"/><path d="M0 135L-158 320H158z" fill="#15583f" stroke="#a8d4ad" stroke-width="6"/><rect x="-18" y="310" width="36" height="55" rx="5" fill="#79503b"/><path d="M0-25l11 25 26 3-20 17 7 25L0 32l-24 13 7-25-20-17 26-3z" fill="url(#gold)" filter="url(#glow)"/><g fill="#f5bfd3" stroke="#fff0f5" stroke-width="3"><circle cx="-42" cy="130" r="10"/><circle cx="48" cy="160" r="10"/><circle cx="-76" cy="220" r="10"/><circle cx="80" cy="235" r="10"/><circle cy="275" r="10"/></g><g fill="#f7d47c"><circle cx="25" cy="95" r="8"/><circle cx="-20" cy="185" r="8"/><circle cx="42" cy="255" r="8"/></g></g>
+<!-- carousel pavilion --> <g transform="translate(1010 440)"><path d="M-125 0Q0-135 125 0v100h-250z" fill="#f5d4e0" stroke="#fff4f6" stroke-width="7"/><path d="M-135 0Q0-155 135 0" fill="none" stroke="#e8b6c9" stroke-width="17"/><path d="M-85 0v100M-28-45v145M28-45v145M85 0v100" stroke="#c58aa4" stroke-width="6"/><path d="M-145 100h290l-25 25h-240z" fill="#fff2f5" stroke="#d9a6bb" stroke-width="5"/><path d="M0-75v175" stroke="#d9a6bb" stroke-width="5"/><path d="M0-92l10 20h-20z" fill="url(#gold)"/></g>
+<!-- warm street lamps --> <g><path d="M110 365v190M1120 350v205" stroke="#343044" stroke-width="9"/><path d="M85 370h52l-7 72H92zM1095 355h52l-7 72h-38z" fill="#ffd98a" stroke="#735044" stroke-width="5" filter="url(#glow)"/></g>
+<!-- snow sparkles --> <g fill="#fff" opacity=".9"><circle cx="120" cy="600" r="4"/><circle cx="260" cy="680" r="3"/><circle cx="520" cy="620" r="4"/><circle cx="910" cy="680" r="3"/><circle cx="1130" cy="610" r="4"/><circle cx="590" cy="500" r="3"/></g>
 </svg>
