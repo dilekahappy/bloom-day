@@ -861,10 +861,10 @@ $('habitForm').onsubmit=e=>{e.preventDefault();const v=$('habitInput').value.tri
 function renderMood(){const host=$('moodHistory');host.innerHTML='';moods.slice(0,7).forEach(m=>{const d=document.createElement('div');d.className='mini';const b=document.createElement('strong');b.textContent=m.mood+' · '+m.date;const p=document.createElement('p');p.textContent=m.note||'Без заметки';d.append(b,p);host.append(d)})}
 let selectedMoods=[];$('moods').onclick=e=>{const b=e.target.closest('button[data-mood]');if(!b)return;const v=b.dataset.mood;selectedMoods=selectedMoods.includes(v)?selectedMoods.filter(x=>x!==v):selectedMoods.concat(v);b.classList.toggle('selected',selectedMoods.includes(v))};$('saveMood').onclick=()=>{if(!selectedMoods.length){toast('Выбери хотя бы одно настроение 💗');return}moods.unshift({mood:selectedMoods.join(' '),note:$('moodNote').value.trim(),date:today.toLocaleDateString('ru-RU')});write('moods',moods);selectedMoods=[];document.querySelectorAll('.mood').forEach(x=>x.classList.remove('selected'));$('moodNote').value='';renderMood();toast('Запись сохранена 💗')};
 function renderShop(){const host=$('shopList');if(!host)return;host.innerHTML='';shopping.filter(x=>x.kind===listMode).forEach(item=>{const row=document.createElement('div');row.className='shopitem';const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!item.done;cb.onchange=()=>{item.done=cb.checked;write('shopping',shopping);if(cb.checked)celebrate('Один пункт готов! 🎀');renderShop()};const label=document.createElement('span');label.className='label';label.textContent=item.name;label.style.textDecoration=item.done?'line-through':'none';const price=document.createElement('span');price.className='price';price.textContent=item.price?Number(item.price).toLocaleString('ru-RU')+' ₸':'';const del=document.createElement('button');del.className='secondary small';del.textContent='×';del.onclick=()=>{shopping=shopping.filter(x=>x!==item);write('shopping',shopping);renderShop()};row.append(cb,label,price,del);host.append(row)});if(!host.children.length)host.innerHTML='<div class="empty">Список пока пустой. Добавь первую идею ✨</div>'}
-document.querySelectorAll('[data-list]').forEach(b=>b.onclick=()=>{listMode=b.dataset.list;document.querySelectorAll('[data-list]').forEach(x=>{x.classList.toggle('active',x===b);x.classList.toggle('secondary',x!==b)});renderShop()});$('shopForm').onsubmit=e=>{e.preventDefault();const name=$('shopInput').value.trim();if(!name)return;shopping.push({name,price:$('shopPrice').value,kind:listMode,done:false});write('shopping',shopping);$('shopInput').value='';$('shopPrice').value='';renderShop()};
+document.querySelectorAll('[data-list]').forEach(b=>b.onclick=()=>{listMode=b.dataset.list;document.querySelectorAll('[data-list]').forEach(x=>{x.classList.toggle('active',x===b);x.classList.toggle('secondary',x!==b)});renderShop()});if($('shopForm'))$('shopForm').onsubmit=e=>{e.preventDefault();const name=$('shopInput').value.trim();if(!name)return;shopping.push({name,price:$('shopPrice').value,kind:listMode,done:false});write('shopping',shopping);$('shopInput').value='';$('shopPrice').value='';renderShop()};
 function renderRewards(){const points=wins.length,levels=[{n:0,title:'Зимняя искорка',hint:'Твоя коллекция только начинается.'},{n:3,title:'Помощница эльфов',hint:'Уже 3 победы — ты наполняешь день волшебством!'},{n:7,title:'Хранительница уюта',hint:'7 побед! Твой зимний дом сияет.'},{n:15,title:'Звёздочка праздника',hint:'15 побед! Ты собрала целое созвездие.'},{n:25,title:'Главная волшебница Bloom Day',hint:'25 побед! Настоящая новогодняя магия.'}];let level=levels[0];levels.forEach(x=>{if(points>=x.n)level=x});$('starCount').textContent='★'.repeat(Math.min(points,5))+'☆'.repeat(Math.max(0,5-Math.min(points,5)));$('rewardLevel').textContent=level.title+' · '+points+' звёзд';$('rewardHint').textContent=level.hint;const rewards=[['🎀','Бантик для зайчика',3],['🧣','Тёплый шарфик',7],['✨','Волшебное сияние',15],['🎄','Праздничный домик',25]];$('rewardGrid').innerHTML='';rewards.forEach(([icon,name,n])=>{const d=document.createElement('div');d.className='reward'+(points>=n?'':' locked');const b=document.createElement('strong');b.textContent=icon+' '+name;const p=document.createElement('span');p.textContent=points>=n?'Открыто!':'Откроется за '+n+' побед';d.append(b,p);$('rewardGrid').append(d)})}
 function renderWins(){const host=$('winList');if(!host)return;host.innerHTML='';renderRewards();wins.forEach(w=>{const row=document.createElement('div');row.className='win';const t=document.createElement('span');t.className='label';t.textContent=w.text;const d=document.createElement('span');d.className='badgewin';d.textContent=w.date;row.append(t,d);host.append(row)});if(!wins.length)host.innerHTML='<div class="empty">Твои победы появятся здесь. Даже маленькие — важны! 🐾</div>'}
-$('winForm').onsubmit=e=>{e.preventDefault();const v=$('winInput').value.trim();if(!v)return;wins.unshift({text:v,date:todayKey});write('wins',wins);$('winInput').value='';renderWins();celebrate('Твоя победа сохранена! 🌟')};
+if($('winForm'))$('winForm').onsubmit=e=>{e.preventDefault();const v=$('winInput').value.trim();if(!v)return;wins.unshift({text:v,date:todayKey});write('wins',wins);$('winInput').value='';renderWins();celebrate('Твоя победа сохранена! 🌟')};
 document.querySelectorAll('.navbtn,.quickbtn,[data-view]').forEach(b=>b.onclick=()=>{if(b.id==='goTimer'){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='home'));$('homeTimer').scrollIntoView({behavior:'smooth'});return}if(!b.dataset.view){document.getElementById('quickgrid')?.scrollIntoView({behavior:'smooth'});return}document.querySelectorAll('.navbtn,.quickbtn').forEach(x=>x.classList.toggle('active',x.dataset.view===b.dataset.view));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===b.dataset.view));if(b.dataset.view==='calendar')renderWeek();if(b.dataset.view==='home')renderTimerTasks();if(b.dataset.view==='home')window.scrollTo({top:0,behavior:'smooth'})});$('openShortcuts').onclick=()=>document.getElementById('quickgrid')?.scrollIntoView({behavior:'smooth'});$('goTimer')?.addEventListener('click',()=>{document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='home'));$('homeTimer').scrollIntoView({behavior:'smooth'})});
 $('tiny').onclick=()=>{$('promptTitle').textContent='Всего две минуты ♡';$('prompt').textContent='Выбери самый простой первый шаг. Не всё дело — только начало: открыть документ, убрать одну полку или собрать вещи в одну стопку.'};$('encourage').onclick=()=>{const lines=['Ты не обязана быть продуктивной каждую минуту. Одно дело — уже достаточно.','Сделай паузу, вдохни и выбери то, что сейчас по силам.','Не ругай себя за вчера. Сегодня можно начать с чистого листа.','Тебе не нужно заслуживать отдых. Чередуй дела и паузы.'];$('promptTitle').textContent='Немного поддержки ♡';$('prompt').textContent=lines[Math.floor(Math.random()*lines.length)]};
 $('walkDone').onclick=()=>{tasks.push({title:'Прогулка (если разрешена врачом)',category:'Движение',time:'',date:todayKey,done:true});write('tasks',tasks);renderTasks();renderWeek();celebrate('Ты отметила заботу о себе 🌷')};
@@ -958,61 +958,31 @@ const labels=['Завтрак','Обед','Ужин','Полдник','Пере�
 week.forEach(([day,meals])=>{const card=document.createElement('div');card.className='menuday';const h=document.createElement('b');h.textContent=day;card.append(h);meals.forEach(([meal,composition],i)=>{const line=document.createElement('div');line.className='mealidea';const title=document.createElement('strong');title.textContent=labels[i]+': '+meal;const ing=document.createElement('small');ing.textContent='Состав: '+composition;line.append(title,ing);card.append(line)});host.append(card)})}
 renderTasks();renderWeek();renderHabits();renderMood();renderMenu();renderRecurring();showClock();renderTimerTasks();
 
-/* Reliable delegated navigation and timer controls */
-document.addEventListener('click',function(e){
- const nav=e.target.closest('.quickbtn,.navbtn,[data-view]');
- if(nav){
-  const target=nav.dataset.view;
-  if(target && document.getElementById(target)){
-   e.preventDefault();
-   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===target));
-   document.querySelectorAll('.quickbtn,.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.view===target));
-   if(target==='calendar')renderWeek();
-   if(target==='home')renderTimerTasks();
-   if(target==='home')window.scrollTo({top:0,behavior:'smooth'});
-   return;
-  }
- }
- if(e.target.closest('#goTimer')){
-  e.preventDefault();
-  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='home'));
-  renderTimerTasks();
-  document.getElementById('homeTimer').scrollIntoView({behavior:'smooth'});
-  return;
- }
- const preset=e.target.closest('.preset');
- if(preset){
-  e.preventDefault();
-  if(timerId){clearInterval(timerId);timerId=null}
-  timerLeft=Number(preset.dataset.min)*60;
-  const start=document.getElementById('timerStart');
-  if(start)start.textContent='Начать';
-  showClock();
-  return;
- }
- if(e.target.closest('#timerStart')){
-  e.preventDefault();
-  const start=document.getElementById('timerStart');
-  if(timerId){clearInterval(timerId);timerId=null;start.textContent='Продолжить';return}
-  const task=(document.getElementById('timerCustomTask')?.value||'').trim()||document.getElementById('timerTask')?.value||'';
-  if(task)document.getElementById('timerMessage').textContent='Сейчас занимаемся: '+task+' ♡';
-  start.textContent='Пауза';
-  timerId=setInterval(()=>{
-   timerLeft--;showClock();
-   if(timerLeft<=0){clearInterval(timerId);timerId=null;start.textContent='Начать';document.getElementById('timerMessage').textContent='Время вышло — сделай небольшой перерыв ☕';celebrate('Ты уделила время своему делу!')}
-  },1000);
-  return;
- }
- if(e.target.closest('#timerReset')){
-  e.preventDefault();
-  if(timerId)clearInterval(timerId);
-  timerId=null;timerLeft=1500;
-  document.getElementById('timerStart').textContent='Начать';
-  document.getElementById('timerMessage').textContent='Ты можешь сделать паузу в любой момент ♡';
-  showClock();
- }
-},true);
-
+/* Navigation and timer use the single set of handlers above. */
 window.addEventListener('load',()=>setTimeout(()=>$('launchScreen')?.classList.add('hide'),650));
 </script>
 </body></html>
+
+<style id="bloom-final-layout-fix">
+/* Keep every home shortcut in one horizontal row */
+#quickgrid{
+ display:flex!important;
+ flex-flow:row nowrap!important;
+ align-items:stretch!important;
+ gap:8px!important;
+ width:100%!important;
+ overflow-x:auto!important;
+ overflow-y:hidden!important;
+ -webkit-overflow-scrolling:touch;
+ scrollbar-width:thin;
+}
+#quickgrid>.quickbtn{
+ flex:0 0 112px!important;
+ width:112px!important;
+ min-width:112px!important;
+ max-width:112px!important;
+ min-height:88px!important;
+}
+#quickgrid>.quickbtn span{pointer-events:none}
+#quickgrid{touch-action:pan-x}
+</style>
