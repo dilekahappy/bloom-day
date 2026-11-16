@@ -429,6 +429,59 @@ input,select,textarea{background:#fffafcf2;border-color:#e8cbd7;border-radius:14
  .hero p{font-size:14px!important}
 }
 
+
+/* CLEAN WINTER UPDATE: remove broken layered decorations and fix task form */
+body{background:linear-gradient(180deg,#101d36 0,#263b5a 420px,#35445f 900px,#17243b 100%) fixed!important}
+.top{background:linear-gradient(135deg,#17243c,#293c5a)!important;color:#fff!important;border:1px solid #f3dce7!important}
+.brand{color:#fff4ec!important;text-shadow:0 2px 12px #080f20!important}
+.brandtag,.top .date{color:#ffe8ed!important;text-shadow:0 1px 5px #111a2c!important}
+.hero{
+ min-height:420px!important;position:relative!important;overflow:hidden!important;
+ display:flex!important;align-items:flex-start!important;justify-content:flex-start!important;
+ padding:26px 20px 190px!important;
+ background:#14213b url("./winter-city.svg") center 58%/cover no-repeat!important;
+ border:1px solid #f8dce8!important;border-radius:26px!important;
+ box-shadow:0 15px 36px #080f20a8!important
+}
+.hero:before,.hero:after{content:none!important;display:none!important}
+.hero:after{display:none!important}
+.hero-copy{width:min(68%,440px)!important;max-width:68%!important;z-index:4!important}
+.hero .eyebrow{color:#ffe8ee!important;text-shadow:0 2px 7px #10182b!important}
+.hero h1{color:#fff9f4!important;font:italic clamp(34px,8vw,48px)/1.06 Georgia,serif!important;text-shadow:0 3px 12px #081326!important;margin:14px 0!important}
+.hero p{color:#fff!important;font-size:15px!important;line-height:1.5!important;text-shadow:0 2px 8px #081326!important}
+.hero-scene{z-index:3!important;pointer-events:none!important}
+.scene-tree{display:none!important}
+.scene-lamp,.scene-carousel,.scene-star{display:none!important}
+.quickgrid{background:linear-gradient(145deg,#192944f5,#34445ff5)!important;border:1px solid #f7dce7!important;border-radius:24px!important}
+.quickbtn{background:linear-gradient(145deg,#f7e6ed,#dfc2d0)!important;border:1px solid #fff!important}
+.grid{display:block!important}
+#home>.grid>.panel{width:100%!important}
+.panel{background:linear-gradient(145deg,#f8e9eff7,#ead3e0f5)!important;border:1px solid #fff!important;border-radius:24px!important;box-shadow:0 10px 30px #07152b55!important;overflow:hidden!important}
+.panel:before,.panel:after{display:none!important;content:none!important}
+.panel h2{color:#473044!important;font-size:25px!important}
+.panel .sub{color:#806b7a!important}
+.add{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin:18px 0!important}
+#taskInput{grid-column:1/-1!important;width:100%!important}
+.task-field{display:flex!important;flex-direction:column!important;gap:5px!important;color:#69566a!important;font-size:12px!important;font-weight:600!important;min-width:0!important}
+.task-field select,.task-field input{width:100%!important;min-height:48px!important;background:#fffafd!important;color:#493b4b!important;border:1px solid #e5cbd8!important;border-radius:14px!important;font-size:15px!important}
+.task-date{grid-column:1/-1!important}
+#taskForm button{grid-column:1/-1!important;width:100%!important;min-height:52px!important;border-radius:15px!important;font-size:17px!important}
+#tasks{min-height:80px!important}
+.empty{color:#907c8d!important;padding:26px 8px!important}
+.bottomnav{background:linear-gradient(145deg,#f9eaf1f5,#e7cfddf5)!important;backdrop-filter:blur(12px)!important;box-shadow:0 8px 24px #07152b55!important;z-index:999!important}
+@media(max-width:800px){
+ .wrap{padding:12px 12px 110px!important}
+ .hero{min-height:420px!important;padding:24px 17px 190px!important;background-position:57% center!important}
+ .hero-copy{width:75%!important;max-width:75%!important}
+ .hero h1{font-size:36px!important}
+ .hero p{font-size:14px!important}
+ .grid{display:block!important}
+ .panel{padding:18px!important}
+ .add{grid-template-columns:1fr 1fr!important}
+ .task-date{grid-column:1/-1!important}
+ .quickgrid{margin-bottom:14px!important}
+}
+
 </style>
 </head>
 <body>
@@ -454,7 +507,7 @@ input,select,textarea{background:#fffafcf2;border-color:#e8cbd7;border-radius:14
 <section class="view active" id="home">
 <div class="grid">
 <div class="panel"><h2>Мой план на сегодня</h2><div class="sub">Отмечай дела — зверята будут радоваться вместе с тобой!</div>
-<form class="add" id="taskForm"><input id="taskInput" placeholder="Например: разобрать кухню 10 минут" required><select id="category"><option>Дом</option><option>Работа</option><option>Для себя</option><option>Движение</option></select><input id="taskTime" type="time" aria-label="Время напоминания"><input id="taskDate" type="date" aria-label="Дата задачи"><button>Добавить</button></form>
+<form class="add" id="taskForm"><input id="taskInput" placeholder="Например: разобрать кухню 10 минут" required><label class="task-field">Категория<select id="category"><option>Дом</option><option>Работа</option><option>Для себя</option><option>Движение</option></select></label><label class="task-field">Время<input id="taskTime" type="time" aria-label="Время напоминания"></label><label class="task-field task-date">Дата<input id="taskDate" type="date" aria-label="Дата задачи"></label><button>Добавить</button></form>
 <div class="stat"><span id="count">0 из 0 выполнено</span><span id="percent">0%</span></div><div class="progress"><i id="bar"></i></div><div id="tasks"></div></div>
 <aside><section class="panel"><h2>Твой мягкий старт</h2><div class="mini"><strong id="promptTitle">Начни с малого ♡</strong><p id="prompt">Поставь ноги на пол, сделай глоток воды и выбери одно простое дело на 5 минут.</p></div><button class="start" id="tiny">Мне сложно начать</button><button class="secondary start" id="encourage">Мне нужна поддержка</button></section>
 <section class="panel"><h2>Забота о себе</h2><div class="sub">Только комфортная и разрешённая врачом активность.</div><div class="mini"><strong>🚶 Небольшая прогулка</strong><p>Отметь прогулку, если она разрешена твоим врачом и подходит по самочувствию.</p><button class="secondary small" id="walkDone">Отметить прогулку</button></div><div class="walk"><a href="https://www.youtube.com/results?search_query=relaxing+walking+music" target="_blank" rel="noopener">♫ Музыка для прогулки</a><a href="https://www.youtube.com/results?search_query=gentle+relaxing+music" target="_blank" rel="noopener">♡ Спокойная музыка</a></div><p class="note">Не добавляй упражнения и нагрузки без разрешения врача — выбирай только подходящую тебе активность.</p></section>
