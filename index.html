@@ -866,6 +866,29 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
  #home .grid>.panel:first-child #taskForm{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
 }
 @media(prefers-reduced-motion:reduce){.pet,.friend{animation:none!important}}
+</style><style id="bloom-home-rework">
+body{background:linear-gradient(145deg,#fff9fb 0%,#f7eaf0 48%,#f1e3eb 100%)!important;background-attachment:fixed!important;color:#554451!important}
+body:before{opacity:.18!important;background:radial-gradient(circle at 12% 18%,#d9b5c5 0 1px,transparent 2px),radial-gradient(circle at 70% 32%,#d9b5c5 0 1px,transparent 2px)!important}
+.top{display:grid!important;grid-template-columns:42px minmax(0,1fr) 46px!important;gap:8px!important;align-items:center!important;margin:5px 0 14px!important;padding:14px 13px 13px!important;border:1px solid #fff!important;border-radius:24px!important;background:linear-gradient(145deg,#fffafcf5,#f0dce7f2)!important;box-shadow:0 8px 24px #8b65751c!important}
+.top .date{grid-column:1/-1!important;margin:3px 0 0!important;color:#765a6b!important;font:13px Georgia,serif!important;text-align:center!important}
+.brand{font-size:32px!important;color:#895e75!important;text-shadow:none!important}.brandtag{color:#927687!important;font-size:12px!important}.brandbow{top:-13px!important}
+.topicon{width:42px!important;height:42px!important;background:linear-gradient(145deg,#fff,#efd9e4)!important;color:#8b5872!important;border:1px solid #e8cad8!important;box-shadow:0 3px 9px #8b657522!important}.topicon:first-child:before{display:none!important}
+.topactions{display:flex!important;justify-content:flex-end!important}.topactions .topicon{width:42px!important;height:42px!important}.bell-toggle svg{width:23px;height:23px;display:block;margin:auto}.bell-toggle.enabled{background:linear-gradient(145deg,#315e50,#1f4b40)!important;color:white!important;border-color:#d5e5dc!important}
+.daily-quote{grid-column:1/-1!important;text-align:center!important;margin:3px auto 0!important;max-width:95%!important;color:#78586b!important;font:italic 14px/1.45 Georgia,serif!important}
+.hero,.quote-card{display:none!important}
+#home .grid{display:block!important;margin-top:0!important}#home .grid>aside{display:none!important}
+#home .grid>.panel:first-child{position:relative!important;isolation:isolate!important;overflow:hidden!important;min-height:0!important;padding:18px!important;border-radius:23px!important;background:linear-gradient(145deg,rgba(255,250,252,.97),rgba(247,229,238,.96))!important;box-shadow:0 9px 24px #8b65751c!important}
+#home .grid>.panel:first-child:before,#home .grid>.panel:first-child:after{display:none!important;content:none!important}
+#home .grid>.panel:first-child .plan-bg-art{position:absolute!important;z-index:-1!important;right:-8px!important;bottom:-12px!important;width:72%!important;height:48%!important;object-fit:cover!important;object-position:center 62%!important;opacity:.20!important;filter:blur(5px) saturate(.8)!important;transform:scale(1.04)!important;border-radius:20px!important;pointer-events:none!important}
+#home .grid>.panel:first-child>*:not(.plan-bg-art){position:relative!important;z-index:1!important;max-width:100%!important}
+#home .grid>.panel:first-child h2{font-size:23px!important;color:#624457!important;text-shadow:none!important}#home .grid>.panel:first-child .sub{font-size:13px!important;color:#8a7180!important}
+#home .grid>.panel:first-child #taskForm{width:100%!important;max-width:100%!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+#home .grid>.panel:first-child #taskForm>*{min-width:0!important;max-width:100%!important}
+#home .grid>.panel:first-child #taskInput,#home .grid>.panel:first-child .task-date,#home .grid>.panel:first-child #taskForm button{grid-column:1/-1!important}
+#home .grid>.panel:first-child #taskForm input,#home .grid>.panel:first-child #taskForm select{width:100%!important;min-width:0!important}
+#home .grid>.panel:first-child #tasks{padding-bottom:8px!important}
+#homeTimer{background:linear-gradient(145deg,#fffafc,#f2dfe9)!important}.panel:before{display:none!important;content:none!important}
+@media(max-width:600px){.wrap{padding:9px 10px 112px!important}.top{grid-template-columns:40px minmax(0,1fr) 42px!important;padding:12px 10px!important}.brand{font-size:30px!important}.brandtag{font-size:11px!important}.topicon,.topactions .topicon{width:39px!important;height:39px!important}.daily-quote{font-size:12px!important;line-height:1.4!important}#home .grid>.panel:first-child{padding:16px!important}#home .grid>.panel:first-child .plan-bg-art{width:78%!important;height:40%!important;opacity:.18!important;filter:blur(6px)!important}}
 </style></head>
 <body>
 <div class="launch-screen" id="launchScreen" aria-label="Bloom Day загружается"><div class="launch-card"><div class="launch-sparkles">✧ ❄ ✧</div><div class="launch-bunny"><svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"><ellipse cx="42" cy="28" rx="13" ry="29" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(-13 42 28)"/><ellipse cx="78" cy="25" rx="13" ry="30" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(12 78 25)"/><ellipse cx="42" cy="27" rx="6" ry="21" fill="#e9aebc"/><ellipse cx="78" cy="24" rx="6" ry="22" fill="#e9aebc"/><ellipse cx="60" cy="79" rx="40" ry="39" fill="#fff7ed" stroke="#d9c4b8" stroke-width="2"/><ellipse cx="46" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="74" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="60" cy="88" rx="5" ry="3.5" fill="#d98eaa"/><path d="M60 91q-7 8-13 1m13-1q7 8 13 1" fill="none" stroke="#98717c" stroke-width="1.8" stroke-linecap="round"/><path d="M27 111q33 15 66 0l-6 17H34z" fill="#b85d69"/><path d="M30 111q30 13 60 0" fill="none" stroke="#e6b96e" stroke-width="4"/><path d="M60 113l-9 11 9 6 9-6z" fill="#f1d18d"/></svg></div><div class="launch-title">Bloom Day</div><div class="launch-sub">Немного зимней магии для твоего дня ♡</div></div></div>
@@ -874,10 +897,8 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 <header class="top">
 <button class="topicon" id="openShortcuts" aria-label="Открыть разделы">☰</button>
 <div class="brandblock"><div class="brandbow">🎀</div><div class="brand">Bloom Day</div><div class="brandtag">Твой уютный планер ♡</div></div>
-<div class="topactions"><button class="topicon" id="notify" aria-label="Уведомления">♧<i></i></button><button class="topicon" data-view="calendar" aria-label="Календарь">▦</button></div>
-<div class="date" id="today"></div></header>
-<section class="hero christmas"><div class="hero-scene" aria-hidden="true"><span class="scene-star">✦</span><span class="scene-tree">🎄</span><span class="scene-carousel">✧</span><span class="scene-lamp">♧</span></div><div class="hero-copy"><div class="eyebrow">✧ A LITTLE WINTER MAGIC EVERY DAY ✧</div><h1>Твой волшебный декабрь ✨</h1><p>Пусть планы будут лёгкими, дни — уютными, а маленькие победы сияют ярче гирлянд. ♡</p></div></section>
-<div class="quote-card" id="quoteCard"><span class="quote-mark">“</span><p id="dailyQuote"></p><button type="button" id="nextQuote">Ещё одна цитата ✨</button></div>
+<div class="topactions"><button class="topicon bell-toggle" id="notify" aria-label="Включить уведомления" aria-pressed="false" title="Уведомления"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+<div class="date" id="today"></div><div class="daily-quote" id="dailyQuote" aria-live="polite"></div></header>
 <div class="quickgrid" id="quickgrid">
 <button class="quickbtn" data-view="home"><span class="quickart">📋</span><span>Планы</span></button>
 <button class="quickbtn" data-view="calendar"><span class="quickart">🗓️</span><span>Календарь</span></button>
@@ -890,7 +911,7 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 </div>
 <section class="view active" id="home">
 <div class="grid">
-<div class="panel"><img class="section-banner plan-banner" src="./%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20ChatGPT%2016%20%D0%BD%D0%BE%D1%8F%D0%B1.%202026%20%D0%B3.%2C%2012_07_08.jpg" alt="Зимняя иллюстрация Bloom Day"><h2>Мой план на сегодня</h2><div class="sub">Отмечай дела — зверята будут радоваться вместе с тобой!</div>
+<div class="panel"><img class="plan-bg-art" src="./%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20ChatGPT%2016%20%D0%BD%D0%BE%D1%8F%D0%B1.%202026%20%D0%B3.%2C%2012_07_08.jpg" alt="" aria-hidden="true"><h2>Мой план на сегодня</h2><div class="sub">Отмечай дела — зверята будут радоваться вместе с тобой!</div>
 <form class="add" id="taskForm"><input id="taskInput" placeholder="Например: разобрать кухню 10 минут" required><label class="task-field">Категория<select id="category"><option>Дом</option><option>Работа</option><option>Для себя</option><option>Движение</option></select></label><label class="task-field">Время<input id="taskTime" type="time" aria-label="Время напоминания"></label><label class="task-field task-date">Дата<input id="taskDate" type="date" aria-label="Дата задачи"></label><button>Добавить</button></form>
 <div class="stat"><span id="count">0 из 0 выполнено</span><span id="percent">0%</span></div><div class="progress"><i id="bar"></i></div><div id="tasks"></div></div>
 <aside><section class="panel"><h2>Твой мягкий старт</h2><div class="mini"><strong id="promptTitle">Начни с малого ♡</strong><p id="prompt">Поставь ноги на пол, сделай глоток воды и выбери одно простое дело на 5 минут.</p></div><button class="start" id="tiny">Мне сложно начать</button><button class="secondary start" id="encourage">Мне нужна поддержка</button></section>
@@ -917,12 +938,15 @@ const dailyQuotes=[
  'Отдых — тоже важная часть твоего плана.',
  'Не сравнивай свой путь с чужим. У каждого свой ритм.',
  'Маленькие шаги каждый день складываются в большие перемены.',
- 'Сегодня можно начать заново — спокойно и без спешки.'
+ 'Сегодня можно начать заново — спокойно и без спешки.',
+ 'Твой темп — правильный. Главное, бережно продолжать.',
+ 'Ты уже делаешь достаточно. Заметь свои маленькие победы.',
+ 'Пусть сегодня найдётся время и для важных дел, и для себя.',
+ 'Не обязательно идеально — достаточно просто начать.',
+ 'Каждый новый день даёт возможность выбрать главное.'
 ];
-let quoteIndex=(Math.floor(Date.now()/86400000)+new Date().getDay())%dailyQuotes.length;
-function showDailyQuote(){ $('dailyQuote').textContent=dailyQuotes[quoteIndex]; }
-$('nextQuote').onclick=()=>{quoteIndex=(quoteIndex+1)%dailyQuotes.length;showDailyQuote()};
-showDailyQuote();
+const quoteDayNumber=Math.floor(new Date(today.getFullYear(),today.getMonth(),today.getDate()).getTime()/86400000);
+$('dailyQuote').textContent='“ '+dailyQuotes[((quoteDayNumber%dailyQuotes.length)+dailyQuotes.length)%dailyQuotes.length]+' ”';
 $('taskDate').value=todayKey;
 function toast(msg){const el=document.createElement('div');el.className='toast';el.textContent=msg;document.body.append(el);setTimeout(()=>el.remove(),2400)}
 function bunnySVG(){return `<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"><ellipse cx="42" cy="28" rx="13" ry="29" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(-13 42 28)"/><ellipse cx="78" cy="25" rx="13" ry="30" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(12 78 25)"/><ellipse cx="42" cy="27" rx="6" ry="21" fill="#e9aebc" transform="rotate(-13 42 27)"/><ellipse cx="78" cy="24" rx="6" ry="22" fill="#e9aebc" transform="rotate(12 78 24)"/><ellipse cx="60" cy="79" rx="40" ry="39" fill="#fff7ed" stroke="#d9c4b8" stroke-width="2"/><ellipse cx="46" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="74" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="60" cy="88" rx="5" ry="3.5" fill="#d98eaa"/><path d="M60 91q-7 8-13 1m13-1q7 8 13 1" fill="none" stroke="#98717c" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="34" cy="88" rx="7" ry="4" fill="#f3bdc8" opacity=".7"/><ellipse cx="86" cy="88" rx="7" ry="4" fill="#f3bdc8" opacity=".7"/><path d="M27 111q33 15 66 0l-6 17H34z" fill="#b85d69"/><path d="M30 111q30 13 60 0" fill="none" stroke="#e6b96e" stroke-width="4"/><path d="M60 113l-9 11 9 6 9-6z" fill="#f1d18d"/><circle cx="25" cy="126" r="8" fill="#fff7ed" stroke="#d9c4b8"/><circle cx="95" cy="126" r="8" fill="#fff7ed" stroke="#d9c4b8"/><path d="M88 48l8-10 2 13 11 3-12 5-3 12-5-12-11-4z" fill="#e6bd70"/><circle cx="20" cy="47" r="4" fill="#e6bd70"/><path d="M16 19l3 7 7 2-7 3-3 7-3-7-7-3 7-2z" fill="#fff"/></svg>`}
@@ -963,26 +987,34 @@ document.addEventListener('submit',e=>{const form=e.target.closest('.reminderFor
 const PUSH_SERVER='https://bloom-day-push.dileka-happy.workers.dev';
 const VAPID_PUBLIC_KEY='BImR-anxXqQyzrlipqsYd33RiVeMEYaDENzq_aEUKBM08QKv1aSOhL6Ls5RAUBEp7gk22rQeNv6OYwSdZHFPe04';
 function urlBase64ToUint8Array(value){const padding='='.repeat((4-value.length%4)%4);const base64=(value+padding).replace(/-/g,'+').replace(/_/g,'/');const raw=atob(base64);return Uint8Array.from([...raw].map(ch=>ch.charCodeAt(0)))}
+let notificationsEnabled=localStorage.getItem('bloom_notifications_enabled')==='true';
+function updateBell(){
+ const bell=$('notify');if(!bell)return;
+ bell.classList.toggle('enabled',notificationsEnabled);
+ bell.setAttribute('aria-pressed',String(notificationsEnabled));
+ bell.setAttribute('aria-label',notificationsEnabled?'Выключить уведомления':'Включить уведомления');
+ bell.title=notificationsEnabled?'Уведомления включены':'Уведомления выключены';
+ bell.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+}
+updateBell();
 $('notify').onclick=async()=>{
-  const status=$('notifyStatus');
-  if(!('serviceWorker'in navigator)||!('PushManager'in window)){status.textContent='Push-уведомления не поддерживаются. Открой Bloom Day с иконки на главном экране iPhone.';return}
-  if(!('Notification'in window)){status.textContent='Уведомления не поддерживаются этим браузером.';return}
-  try{
-    const permission=await Notification.requestPermission();
-    if(permission!=='granted'){status.textContent='Разрешение не получено. Разреши уведомления для Bloom Day в настройках iPhone.';return}
-    const registration=await navigator.serviceWorker.ready;
-    let subscription=await registration.pushManager.getSubscription();
-    if(!subscription){
-      subscription=await registration.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlBase64ToUint8Array(VAPID_PUBLIC_KEY)});
-    }
-    const response=await fetch(PUSH_SERVER+'/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(subscription)});
-    if(!response.ok)throw new Error('HTTP '+response.status);
-    status.textContent='Устройство подключено к Bloom Day. Отправка фоновых напоминаний ещё настраивается ♡';
-  }catch(error){
-    console.error('Push subscription error:',error);
-    status.textContent='Не удалось подключить уведомления. Проверь, что Bloom Day установлен на экран «Домой», и попробуй ещё раз.';
-  }
-};let notified=new Set();function checkReminders(){if(!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date(),hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0'),clock=hh+':'+mm;tasks.forEach((t,i)=>{const key=t.date+':'+i+':'+t.time;if(taskDate(t)===todayKey&&t.time===clock&&!t.done&&!notified.has(key)){new Notification('Bloom Day 🌸',{body:'Пора уделить немного времени: '+t.title});notified.add(key)}});recurring.forEach(r=>{const key=todayKey+':'+r.id;if(r.time===clock&&r.days.includes(now.getDay())&&!notified.has(key)){new Notification('Bloom Day 🎄',{body:r.title});notified.add(key)}})}setInterval(checkReminders,15000);
+ if(notificationsEnabled){
+  notificationsEnabled=false;localStorage.setItem('bloom_notifications_enabled','false');updateBell();
+  try{const reg=await navigator.serviceWorker?.getRegistration();const sub=await reg?.pushManager?.getSubscription();if(sub)await sub.unsubscribe()}catch(e){console.warn('Unsubscribe:',e)}
+  toast('Уведомления выключены');return;
+ }
+ if(!('serviceWorker'in navigator)||!('PushManager'in window)||!('Notification'in window)){toast('Установи Bloom Day на экран «Домой» через Safari, чтобы включить уведомления');return}
+ try{
+  const permission=await Notification.requestPermission();
+  if(permission!=='granted'){toast('Разреши уведомления в настройках iPhone');return}
+  const registration=await navigator.serviceWorker.ready;
+  let subscription=await registration.pushManager.getSubscription();
+  if(!subscription)subscription=await registration.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlBase64ToUint8Array(VAPID_PUBLIC_KEY)});
+  const response=await fetch(PUSH_SERVER+'/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(subscription)});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  notificationsEnabled=true;localStorage.setItem('bloom_notifications_enabled','true');updateBell();toast('Уведомления включены ♡');
+ }catch(error){console.error('Push subscription error:',error);toast('Не удалось включить уведомления. Попробуй из установленного приложения.')}
+};let notified=new Set();function checkReminders(){if(!notificationsEnabled||!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date(),hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0'),clock=hh+':'+mm;tasks.forEach((t,i)=>{const key=t.date+':'+i+':'+t.time;if(taskDate(t)===todayKey&&t.time===clock&&!t.done&&!notified.has(key)){new Notification('Bloom Day 🌸',{body:'Пора уделить немного времени: '+t.title});notified.add(key)}});recurring.forEach(r=>{const key=todayKey+':'+r.id;if(r.time===clock&&r.days.includes(now.getDay())&&!notified.has(key)){new Notification('Bloom Day 🎄',{body:r.title});notified.add(key)}})}setInterval(checkReminders,15000);
 function renderTimerTasks(){const sel=$('timerTask');if(!sel)return;const keep=sel.value;sel.innerHTML='<option value="">Выбрать задачу из плана…</option>';tasks.filter(t=>!t.done).forEach(t=>{const o=document.createElement('option');o.value=t.title;o.textContent=t.title;sel.append(o)});if([...sel.options].some(o=>o.value===keep))sel.value=keep}
 function showClock(){const m=Math.floor(timerLeft/60),s=timerLeft%60;$('clock').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}$('timerStart').onclick=()=>{const timerTaskName=$('timerCustomTask').value.trim()||$('timerTask').value;if(!timerId&&timerTaskName)$('timerMessage').textContent='Сейчас занимаемся: '+timerTaskName+' ♡';if(timerId){clearInterval(timerId);timerId=null;$('timerStart').textContent='Продолжить';return}$('timerStart').textContent='Пауза';timerId=setInterval(()=>{timerLeft--;showClock();if(timerLeft<=0){clearInterval(timerId);timerId=null;$('timerStart').textContent='Начать';$('timerMessage').textContent='Время вышло — сделай небольшой перерыв ☕';celebrate('Ты уделила время своему делу!')}} ,1000)};$('timerReset').onclick=()=>{clearInterval(timerId);timerId=null;timerLeft=1500;$('timerStart').textContent='Начать';$('timerMessage').textContent='Ты можешь сделать паузу в любой момент ♡';showClock()};document.querySelectorAll('.preset').forEach(b=>b.onclick=()=>{clearInterval(timerId);timerId=null;timerLeft=Number(b.dataset.min)*60;$('timerStart').textContent='Начать';showClock()});
 function snow(){const field=$('snowfield');for(let i=0;i<18;i++){const s=document.createElement('span');s.className='snow';s.textContent=['❄','✧','·'][i%3];s.style.left=Math.random()*100+'vw';s.style.animationDuration=(9+Math.random()*12)+'s';s.style.animationDelay=(-Math.random()*18)+'s';s.style.opacity=.35+Math.random()*.55;s.style.fontSize=(8+Math.random()*10)+'px';field.append(s)}}snow();
