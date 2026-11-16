@@ -1124,4 +1124,56 @@ renderTasks();renderWeek();renderHabits();renderMood();renderMenu();renderRecurr
 window.addEventListener('load',()=>setTimeout(()=>$('launchScreen')?.classList.add('hide'),650));
 function snow(){const field=$('snowfield');if(!field)return;for(let i=0;i<18;i++){const s=document.createElement('span');s.className='snow';s.textContent=['❄','✧','·'][i%3];s.style.left=Math.random()*100+'vw';s.style.animationDuration=(9+Math.random()*12)+'s';s.style.animationDelay=(-Math.random()*18)+'s';s.style.opacity=.35+Math.random()*.55;s.style.fontSize=(8+Math.random()*10)+'px';field.append(s)}}snow();
 </script>
+
+<script>
+/* BLOOM_BELL_RELIABLE_HANDLER */
+(()=>{
+ const bell=document.getElementById('notify');
+ if(!bell)return;
+ bell.onclick=null;
+ bell.addEventListener('click',async event=>{
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  const enabled=localStorage.getItem('bloom_notifications_enabled')==='true';
+  const say=msg=>{
+   const toast=document.getElementById('toast');
+   if(toast){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3200)}
+   else alert(msg);
+  };
+  const paint=on=>{
+   bell.classList.toggle('enabled',on);
+   bell.setAttribute('aria-pressed',String(on));
+   bell.setAttribute('aria-label',on?'Выключить уведомления':'Включить уведомления');
+   bell.title=on?'Уведомления включены':'Уведомления выключены';
+  };
+  if(enabled){
+   localStorage.setItem('bloom_notifications_enabled','false');paint(false);
+   try{const reg=await navigator.serviceWorker.getRegistration();const sub=await reg?.pushManager?.getSubscription();if(sub)await sub.unsubscribe()}catch(e){console.error(e)}
+   say('Уведомления выключены');return;
+  }
+  if(!('Notification'in window)||!('serviceWorker'in navigator)||!('PushManager'in window)){
+   say('Открой Bloom Day как приложение с экрана «Домой» на iPhone, затем включи уведомления.');return;
+  }
+  if(!window.isSecureContext){say('Для уведомлений открой Bloom Day через Safari по защищённой ссылке.');return}
+  try{
+   const permission=await Notification.requestPermission();
+   if(permission!=='granted'){say('Разреши уведомления для Bloom Day в настройках iPhone.');return}
+   const reg=await navigator.serviceWorker.ready;
+   let sub=await reg.pushManager.getSubscription();
+   if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:(()=>{
+    const key='BImR-anxXqQyzrlipqsYd33RiVeMEYaDENzq_aEUKBM08QKv1aSOhL6Ls5RAUBEp7gk22rQeNv6OYwSdZHFPe04';
+    const pad='='.repeat((4-key.length%4)%4),raw=atob((key+pad).replace(/-/g,'+').replace(/_/g,'/'));
+    return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)));
+   })()});
+   const response=await fetch('https://bloom-day-push.dileka-happy.workers.dev/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(sub)});
+   if(!response.ok)throw new Error('Subscription server returned '+response.status);
+   localStorage.setItem('bloom_notifications_enabled','true');paint(true);say('Уведомления включены ♡');
+  }catch(error){
+   console.error('Bloom Day bell:',error);
+   say('Не удалось подключить уведомления. Проверь разрешение в настройках iPhone и попробуй ещё раз.');
+  }
+ },true);
+})();
+</script>
+
 </body></html>
