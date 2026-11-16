@@ -809,10 +809,67 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 #quickgrid>.quickbtn{flex:0 0 112px!important;width:112px!important;min-width:112px!important;max-width:112px!important;min-height:88px!important}
 #quickgrid>.quickbtn span{pointer-events:none}
 </style>
-<style id="bloom-section-banners">.section-banner{display:block;width:100%;height:auto;max-height:190px;object-fit:cover;border-radius:20px;margin:0 0 16px;box-shadow:0 7px 20px #a66b8420}@media(max-width:520px){.section-banner{max-height:145px;border-radius:16px;margin-bottom:13px}}</style></head>
+<style id="bloom-section-banners">.section-banner{display:block;width:100%;height:auto;max-height:190px;object-fit:cover;border-radius:20px;margin:0 0 16px;box-shadow:0 7px 20px #a66b8420}@media(max-width:520px){.section-banner{max-height:145px;border-radius:16px;margin-bottom:13px}}</style><style id="bloom-mobile-polish">
+/* Keep all cards clean: no city silhouettes behind the timer or forms */
+.panel:before{display:none!important;background:none!important;content:none!important}
+#homeTimer{background:linear-gradient(145deg,#fff8fb 0%,#f3dfe9 100%)!important;isolation:isolate!important}
+#homeTimer:before{display:none!important;content:none!important}
+#home .grid>.panel:first-child{
+ background:linear-gradient(145deg,#f8e8ef,#ead0de)!important;
+ background-image:none!important;
+}
+#home .grid>.panel:first-child:before,
+#home .grid>.panel:first-child:after{display:none!important;content:none!important}
+#home .grid>.panel:first-child>*{max-width:100%!important}
+#home .grid>.panel:first-child #taskForm{
+ width:100%!important;max-width:100%!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+}
+#taskForm>*{min-width:0!important;max-width:100%!important}
+#taskForm input,#taskForm select{width:100%!important;min-width:0!important;max-width:100%!important}
+#home .grid>.panel:first-child #taskInput,
+#home .grid>.panel:first-child .task-date,
+#home .grid>.panel:first-child #taskForm button{grid-column:1/-1!important}
+#tasks,.task{min-width:0!important;max-width:100%!important}
+.task .name{min-width:0!important;overflow-wrap:anywhere!important}
+.task .tag{white-space:normal!important;text-align:center!important}
+#timerTask,#timerCustomTask{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+.timer{overflow:hidden!important}
+.section-banner{max-height:118px!important;border-radius:16px!important;object-fit:cover!important}
+.plan-banner{object-position:center 60%!important}
+.panel h2{font-size:23px!important}
+.quickgrid .quickbtn{min-height:76px!important;flex-basis:94px!important;width:94px!important;min-width:94px!important;max-width:94px!important;font-size:12px!important;gap:3px!important}
+.quickgrid .quickart{font-size:29px!important;margin-top:0!important;padding-top:0!important}
+.bottomnav .navbtn{font-size:11px!important}
+.bottomnav .navbtn span{font-size:23px!important;padding-top:0!important}
+.quickbtn .quickart:before,.bottomnav .navbtn span:before,.mood:before,.reward:before,.badgewin:before,.topicon:before{content:none!important;display:none!important}
+.quickbtn:after{display:none!important;content:none!important}
+.mood{padding-top:9px!important}
+.quote-card{display:flex;align-items:center;gap:10px;margin:12px 0 4px;padding:12px 14px;border:1px solid #f4dce7;border-radius:18px;background:linear-gradient(120deg,#fff8fb,#f2dce7);box-shadow:0 6px 18px #26334a22}
+.quote-mark{font:36px Georgia,serif;color:#c58ba4;line-height:1}
+.quote-card p{flex:1;margin:0;color:#78586b;font:italic 14px/1.4 Georgia,serif}
+.quote-card button{flex:0 0 auto;padding:7px 9px;font-size:10px;background:#e7c3d2;color:#70495d}
+.pet{display:block!important;position:fixed!important;width:72px!important;height:84px!important;right:7px!important;bottom:calc(82px + env(safe-area-inset-bottom))!important;z-index:900!important;pointer-events:none!important}
+.friend{position:fixed;left:8px;bottom:calc(83px + env(safe-area-inset-bottom));z-index:899;font-size:42px;filter:drop-shadow(0 5px 7px #6b526633);pointer-events:none;animation:friendBob 3.2s ease-in-out infinite}
+.pet{animation:petFloat 3s ease-in-out infinite!important}
+@keyframes friendBob{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-10px) rotate(-5deg)}}
+@media(max-width:520px){
+ .section-banner{max-height:105px!important;margin-bottom:11px!important}
+ .panel h2{font-size:21px!important}
+ .quote-card{gap:7px;padding:10px}
+ .quote-card p{font-size:12px}
+ .quote-card button{font-size:9px;padding:6px}
+ .quickgrid .quickbtn{flex-basis:88px!important;width:88px!important;min-width:88px!important;max-width:88px!important;min-height:70px!important}
+ .quickgrid .quickart{font-size:26px!important}
+ .pet{width:60px!important;height:70px!important}
+ .friend{font-size:34px}
+ #home .grid>.panel:first-child #taskForm{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+}
+@media(prefers-reduced-motion:reduce){.pet,.friend{animation:none!important}}
+</style></head>
 <body>
 <div class="launch-screen" id="launchScreen" aria-label="Bloom Day загружается"><div class="launch-card"><div class="launch-sparkles">✧ ❄ ✧</div><div class="launch-bunny"><svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"><ellipse cx="42" cy="28" rx="13" ry="29" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(-13 42 28)"/><ellipse cx="78" cy="25" rx="13" ry="30" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(12 78 25)"/><ellipse cx="42" cy="27" rx="6" ry="21" fill="#e9aebc"/><ellipse cx="78" cy="24" rx="6" ry="22" fill="#e9aebc"/><ellipse cx="60" cy="79" rx="40" ry="39" fill="#fff7ed" stroke="#d9c4b8" stroke-width="2"/><ellipse cx="46" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="74" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="60" cy="88" rx="5" ry="3.5" fill="#d98eaa"/><path d="M60 91q-7 8-13 1m13-1q7 8 13 1" fill="none" stroke="#98717c" stroke-width="1.8" stroke-linecap="round"/><path d="M27 111q33 15 66 0l-6 17H34z" fill="#b85d69"/><path d="M30 111q30 13 60 0" fill="none" stroke="#e6b96e" stroke-width="4"/><path d="M60 113l-9 11 9 6 9-6z" fill="#f1d18d"/></svg></div><div class="launch-title">Bloom Day</div><div class="launch-sub">Немного зимней магии для твоего дня ♡</div></div></div>
-<div id="snowfield"></div><div class="pet" id="pet" aria-hidden="true"></div>
+<div id="snowfield"></div><div class="pet" id="pet" aria-hidden="true"></div><div class="friend" aria-hidden="true">🐻‍❄️</div>
 <main class="wrap">
 <header class="top">
 <button class="topicon" id="openShortcuts" aria-label="Открыть разделы">☰</button>
@@ -820,6 +877,7 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 <div class="topactions"><button class="topicon" id="notify" aria-label="Уведомления">♧<i></i></button><button class="topicon" data-view="calendar" aria-label="Календарь">▦</button></div>
 <div class="date" id="today"></div></header>
 <section class="hero christmas"><div class="hero-scene" aria-hidden="true"><span class="scene-star">✦</span><span class="scene-tree">🎄</span><span class="scene-carousel">✧</span><span class="scene-lamp">♧</span></div><div class="hero-copy"><div class="eyebrow">✧ A LITTLE WINTER MAGIC EVERY DAY ✧</div><h1>Твой волшебный декабрь ✨</h1><p>Пусть планы будут лёгкими, дни — уютными, а маленькие победы сияют ярче гирлянд. ♡</p></div></section>
+<div class="quote-card" id="quoteCard"><span class="quote-mark">“</span><p id="dailyQuote"></p><button type="button" id="nextQuote">Ещё одна цитата ✨</button></div>
 <div class="quickgrid" id="quickgrid">
 <button class="quickbtn" data-view="home"><span class="quickart">📋</span><span>Планы</span></button>
 <button class="quickbtn" data-view="calendar"><span class="quickart">🗓️</span><span>Календарь</span></button>
@@ -832,7 +890,7 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 </div>
 <section class="view active" id="home">
 <div class="grid">
-<div class="panel"><h2>Мой план на сегодня</h2><div class="sub">Отмечай дела — зверята будут радоваться вместе с тобой!</div>
+<div class="panel"><img class="section-banner plan-banner" src="./%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20ChatGPT%2016%20%D0%BD%D0%BE%D1%8F%D0%B1.%202026%20%D0%B3.%2C%2012_07_08.jpg" alt="Зимняя иллюстрация Bloom Day"><h2>Мой план на сегодня</h2><div class="sub">Отмечай дела — зверята будут радоваться вместе с тобой!</div>
 <form class="add" id="taskForm"><input id="taskInput" placeholder="Например: разобрать кухню 10 минут" required><label class="task-field">Категория<select id="category"><option>Дом</option><option>Работа</option><option>Для себя</option><option>Движение</option></select></label><label class="task-field">Время<input id="taskTime" type="time" aria-label="Время напоминания"></label><label class="task-field task-date">Дата<input id="taskDate" type="date" aria-label="Дата задачи"></label><button>Добавить</button></form>
 <div class="stat"><span id="count">0 из 0 выполнено</span><span id="percent">0%</span></div><div class="progress"><i id="bar"></i></div><div id="tasks"></div></div>
 <aside><section class="panel"><h2>Твой мягкий старт</h2><div class="mini"><strong id="promptTitle">Начни с малого ♡</strong><p id="prompt">Поставь ноги на пол, сделай глоток воды и выбери одно простое дело на 5 минут.</p></div><button class="start" id="tiny">Мне сложно начать</button><button class="secondary start" id="encourage">Мне нужна поддержка</button></section>
@@ -852,6 +910,19 @@ const $=id=>document.getElementById(id);const today=new Date();const dateKey=d=>
 const read=(k,f)=>{try{return JSON.parse(localStorage.getItem('bloom_'+k)||'null')??f}catch{return f}};const write=(k,v)=>localStorage.setItem('bloom_'+k,JSON.stringify(v));
 const legacyTasks=(()=>{try{return JSON.parse(localStorage.getItem('bloomTasks')||'[]')}catch{return []}})();let tasks=read('tasks',legacyTasks),habits=read('habits',['Выпить воды','Немного почитать','Навести уют дома','Прогуляться, если хочется и можно','Время для себя']),habitChecks=read('habitChecks',{}),moods=read('moods',[]),shopping=read('shopping',[]),wins=read('wins',[]),recurring=read('recurringReminders',[]),selectedDay=todayKey,listMode='buy',timerLeft=1500,timerId=null;
 $('today').textContent=today.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});
+const dailyQuotes=[
+ 'Тебе не нужно успеть всё. Достаточно одного маленького шага.',
+ 'Ты можешь двигаться в своём темпе — это тоже движение вперёд.',
+ 'Даже самый обычный день может стать началом чего-то хорошего.',
+ 'Отдых — тоже важная часть твоего плана.',
+ 'Не сравнивай свой путь с чужим. У каждого свой ритм.',
+ 'Маленькие шаги каждый день складываются в большие перемены.',
+ 'Сегодня можно начать заново — спокойно и без спешки.'
+];
+let quoteIndex=(Math.floor(Date.now()/86400000)+new Date().getDay())%dailyQuotes.length;
+function showDailyQuote(){ $('dailyQuote').textContent=dailyQuotes[quoteIndex]; }
+$('nextQuote').onclick=()=>{quoteIndex=(quoteIndex+1)%dailyQuotes.length;showDailyQuote()};
+showDailyQuote();
 $('taskDate').value=todayKey;
 function toast(msg){const el=document.createElement('div');el.className='toast';el.textContent=msg;document.body.append(el);setTimeout(()=>el.remove(),2400)}
 function bunnySVG(){return `<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"><ellipse cx="42" cy="28" rx="13" ry="29" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(-13 42 28)"/><ellipse cx="78" cy="25" rx="13" ry="30" fill="#f7e6dc" stroke="#d8b9ac" stroke-width="2" transform="rotate(12 78 25)"/><ellipse cx="42" cy="27" rx="6" ry="21" fill="#e9aebc" transform="rotate(-13 42 27)"/><ellipse cx="78" cy="24" rx="6" ry="22" fill="#e9aebc" transform="rotate(12 78 24)"/><ellipse cx="60" cy="79" rx="40" ry="39" fill="#fff7ed" stroke="#d9c4b8" stroke-width="2"/><ellipse cx="46" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="74" cy="77" rx="3.5" ry="4.5" fill="#624d57"/><ellipse cx="60" cy="88" rx="5" ry="3.5" fill="#d98eaa"/><path d="M60 91q-7 8-13 1m13-1q7 8 13 1" fill="none" stroke="#98717c" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="34" cy="88" rx="7" ry="4" fill="#f3bdc8" opacity=".7"/><ellipse cx="86" cy="88" rx="7" ry="4" fill="#f3bdc8" opacity=".7"/><path d="M27 111q33 15 66 0l-6 17H34z" fill="#b85d69"/><path d="M30 111q30 13 60 0" fill="none" stroke="#e6b96e" stroke-width="4"/><path d="M60 113l-9 11 9 6 9-6z" fill="#f1d18d"/><circle cx="25" cy="126" r="8" fill="#fff7ed" stroke="#d9c4b8"/><circle cx="95" cy="126" r="8" fill="#fff7ed" stroke="#d9c4b8"/><path d="M88 48l8-10 2 13 11 3-12 5-3 12-5-12-11-4z" fill="#e6bd70"/><circle cx="20" cy="47" r="4" fill="#e6bd70"/><path d="M16 19l3 7 7 2-7 3-3 7-3-7-7-3 7-2z" fill="#fff"/></svg>`}
