@@ -482,6 +482,25 @@ body{background:linear-gradient(180deg,#101d36 0,#263b5a 420px,#35445f 900px,#17
  .quickgrid{margin-bottom:14px!important}
 }
 
+
+/* Explicit GitHub Pages image URL — force the real illustrated scene */
+.hero.christmas{
+ position:relative!important;
+ background-color:#14213b!important;
+ background-image:linear-gradient(90deg,rgba(12,25,48,.45),rgba(12,25,48,.02)),url("https://dilekahappy.github.io/bloom-day/winter-city.svg")!important;
+ background-position:center center!important;
+ background-size:cover!important;
+ background-repeat:no-repeat!important;
+ min-height:430px!important;
+ overflow:hidden!important;
+}
+.hero.christmas .hero-copy{position:relative!important;z-index:5!important;width:72%!important;max-width:460px!important}
+.hero.christmas .hero-scene{display:none!important}
+@media(max-width:800px){
+ .hero.christmas{min-height:430px!important;background-position:58% center!important;background-size:cover!important}
+ .hero.christmas .hero-copy{width:78%!important;max-width:78%!important}
+}
+
 </style>
 </head>
 <body>
