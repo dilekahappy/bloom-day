@@ -1008,6 +1008,11 @@ body:before{opacity:.32!important}
 .menuhint{font-size:11px!important}
 .task-date-heading{font-size:13px!important;color:#315e50!important;font-weight:700!important;padding:8px 0 4px!important;text-transform:capitalize}
 @media(max-width:600px){#home .grid>.panel:first-child .plan-winter-decor svg{min-height:65px!important}.day.today{transform:none!important}}
+</style><style id="bloom-clean-decoration">
+/* Remove leftover decorative block overlays; keep only the winter illustration and animated snowfall. */
+.panel:after,.mini:after,.menuday:after,.menu-idea:after,.reward:after{content:none!important;display:none!important;background:none!important;clip-path:none!important}
+.quickbtn{flex:0 0 112px!important}
+@media(max-width:600px){.quickbtn{flex-basis:112px!important}}
 </style></head>
 <body>
 <div id="snowfield"></div>
@@ -1022,7 +1027,7 @@ body:before{opacity:.32!important}
 <div class="quickgrid" id="quickgrid">
 <button class="quickbtn" data-view="home"><span class="quickart">📋</span><span>Планы</span></button>
 <button class="quickbtn" data-view="calendar"><span class="quickart">🗓️</span><span>Календарь</span></button>
-<button class="quickbtn" data-view="habits"><span class="quickart">🎀</span><span>Привычки</span></button>
+<button class="quickbtn" data-view="habits"><span class="quickart">🎀</span><span>Напоминания</span></button>
 
 <button class="quickbtn" data-view="menu"><span class="quickart">🍲</span><span>Меню</span></button>
 
@@ -1218,7 +1223,7 @@ const menuIdeas={
 ['Курица с овощами в духовке','Куриное филе, кабачок, морковь, сладкий перец'],
 ['Гречка с курицей и огуречным салатом','Гречка, куриное филе, огурец, зелень'],
 ['Картофельная запеканка','Картофель, фарш куриный или индейки, сыр'],
-['Рыба с рисом и овощами','Филе рыбы, рис, овощи, лимон по желанию'],
+['Запечённая курица с рисом','Куриное филе, рис, сладкий перец, зелень'],
 ['Омлет с овощами и тостом','Яйца, молоко, овощи, хлеб'],
 ['Тушёная капуста с индейкой','Капуста, индейка, морковь, лук'],
 ['Паста с курицей и кабачком','Макароны, курица, кабачок, немного сыра']]
