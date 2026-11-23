@@ -818,6 +818,20 @@ button,.navbtn,.quickbtn{pointer-events:auto!important;touch-action:manipulation
 .reminder-manager p,.reminder-manager .note{font-size:12px!important}
 .reminderForm .rowform button{white-space:nowrap;font-size:12px!important}
 
+
+/* Bloom Day update: future plans, clear current weekday and winter details */
+body{background:linear-gradient(180deg,#17233d 0,#263650 36%,#d8dce8 100%) fixed!important}
+.task-date-group{margin:8px 0 15px;padding:10px 12px;border:1px solid #e8d5e0;border-radius:15px;background:linear-gradient(145deg,#fffafc,#f3edf4)}
+.task-date-heading{font:600 13px Georgia,serif;color:#49634f;padding:2px 2px 8px;border-bottom:1px solid #eadde5;margin-bottom:4px;text-transform:capitalize}
+.day.today,.day.today.selected{background:linear-gradient(145deg,#527b68,#355c50)!important;border:2px solid #e8c88c!important;color:#fff!important;box-shadow:0 0 0 3px #527b6830,0 5px 13px #253b3350!important;transform:translateY(-2px)}
+.day.today b,.day.today.selected b{color:#fff!important}
+.day em{display:block;font-style:normal;font-size:9px;font-weight:700;margin-top:3px;color:#527b68}
+.day.today em{color:#fff4cf}
+#home .grid>.panel:first-child{position:relative!important;overflow:hidden!important;background:linear-gradient(145deg,#fffafcfa,#e9e6efed)!important}
+#home .grid>.panel:first-child .plan-bg-art{z-index:0!important;top:0!important;right:0!important;bottom:auto!important;width:100%!important;height:115px!important;object-fit:cover!important;object-position:center 57%!important;opacity:.18!important;filter:blur(1.2px) saturate(.82)!important;transform:none!important;border-radius:20px 20px 0 0!important}
+#home .grid>.panel:first-child h2{position:relative!important;z-index:2!important;padding-top:25px!important}
+#home .grid>.panel:first-child h2:before{content:"❄  ✧  ❄  ·  ✦  ·  ❄  ✧  ❄";display:block;text-align:center;font:12px Georgia,serif;letter-spacing:3px;color:#a98a9d;opacity:.82;margin:0 0 10px}
+#home .grid>.panel:first-child .sub,#home .grid>.panel:first-child #taskForm,#home .grid>.panel:first-child .stat,#home .grid>.panel:first-child .progress,#home .grid>.panel:first-child #tasks{position:relative!important;z-index:2!important}
 </style>
 <style id="bloom-final-layout-fix">
 #quickgrid{display:flex!important;flex-flow:row nowrap!important;align-items:stretch!important;gap:8px!important;width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch;scrollbar-width:thin;touch-action:pan-x}
@@ -1023,7 +1037,32 @@ function bunnySVG(){return `<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/
 $('pet').innerHTML=bunnySVG();
 function celebrate(msg='Ура! Маленькая победа!'){const pet=$('pet');pet.classList.remove('happy');void pet.offsetWidth;pet.classList.add('happy');for(let i=0;i<7;i++){const e=document.createElement('span');e.className='flowerpop';e.textContent=['🌸','✨','🌼','❄️','💗'][i%5];e.style.left=(35+Math.random()*30)+'vw';e.style.top=(45+Math.random()*20)+'vh';document.body.append(e);setTimeout(()=>e.remove(),1500)}toast(msg);setTimeout(()=>pet.classList.remove('happy'),2600)}
 function taskDate(t){return t.date||todayKey}
-function renderTasks(){const host=$('tasks');host.innerHTML='';const todays=tasks.filter(t=>taskDate(t)===todayKey);if(!todays.length)host.innerHTML='<div class="empty">Пока здесь свободно.<br>Добавь одно небольшое дело 🌷</div>';todays.forEach(t=>{const i=tasks.indexOf(t),row=document.createElement('div');row.className='task'+(t.done?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!t.done;cb.onchange=()=>{tasks[i].done=cb.checked;write('tasks',tasks);if(cb.checked){wins.unshift({text:'Выполнено: '+t.title,date:todayKey,auto:true});write('wins',wins);celebrate('Зайчик радуется твоей победе! 🐰');renderWins()}renderTasks();renderWeek()};const name=document.createElement('span');name.className='name';name.textContent=t.title;const tag=document.createElement('span');tag.className='tag';tag.textContent=t.category+(t.time?' · '+t.time:'');const del=document.createElement('button');del.className='secondary small';del.textContent='×';del.onclick=()=>{tasks.splice(i,1);write('tasks',tasks);renderTasks();renderWeek()};row.append(cb,name,tag,del);host.append(row)});const done=todays.filter(t=>t.done).length,pct=todays.length?Math.round(done/todays.length*100):0;$('count').textContent=done+' из '+todays.length+' выполнено';$('percent').textContent=pct+'%';$('bar').style.width=pct+'%';if(todays.length&&done===todays.length){$('promptTitle').textContent='Все дела на сегодня выполнены!';$('prompt').textContent='Можно отдохнуть и порадоваться тому, что ты сделала. 🐻‍❄️'}}
+function renderTasks(){
+ const host=$('tasks');host.innerHTML='';
+ const visible=tasks.filter(t=>taskDate(t)>=todayKey).sort((a,b)=>taskDate(a).localeCompare(taskDate(b))||(a.time||'').localeCompare(b.time||''));
+ const groups=[...new Set(visible.map(taskDate))];
+ if(!groups.length)host.innerHTML='<div class="empty">Пока здесь свободно.<br>Добавь одно небольшое дело 🌷</div>';
+ groups.forEach(k=>{
+  const group=document.createElement('section');group.className='task-date-group';
+  const heading=document.createElement('div');heading.className='task-date-heading';
+  const d=new Date(k+'T12:00:00');
+  heading.textContent=k===todayKey?'Сегодня · '+d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'}):d.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});
+  group.append(heading);
+  visible.filter(t=>taskDate(t)===k).forEach(t=>{
+   const i=tasks.indexOf(t),row=document.createElement('div');row.className='task'+(t.done?' done':'');
+   const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!t.done;
+   cb.onchange=()=>{tasks[i].done=cb.checked;write('tasks',tasks);if(cb.checked){wins.unshift({text:'Выполнено: '+t.title,date:todayKey,auto:true});write('wins',wins);celebrate('Зайчик радуется твоей победе! 🐰');renderWins()}renderTasks();renderWeek()};
+   const name=document.createElement('span');name.className='name';name.textContent=t.title;
+   const tag=document.createElement('span');tag.className='tag';tag.textContent=(t.category||'Дело')+(t.time?' · '+t.time:'');
+   const del=document.createElement('button');del.className='secondary small';del.textContent='×';del.onclick=()=>{tasks.splice(i,1);write('tasks',tasks);renderTasks();renderWeek()};
+   row.append(cb,name,tag,del);group.append(row);
+  });
+  host.append(group);
+ });
+ const todays=tasks.filter(t=>taskDate(t)===todayKey),done=todays.filter(t=>t.done).length,pct=todays.length?Math.round(done/todays.length*100):0;
+ $('count').textContent=done+' из '+todays.length+' выполнено сегодня';$('percent').textContent=pct+'%';$('bar').style.width=pct+'%';
+ if(todays.length&&done===todays.length){$('promptTitle').textContent='Все дела на сегодня выполнены!';$('prompt').textContent='Можно отдохнуть и порадоваться тому, что ты сделала. 🐻‍❄️'}
+}
 let taskSubmitting=false;
 $('taskForm').addEventListener('submit',e=>{
  e.preventDefault();e.stopImmediatePropagation();
@@ -1043,7 +1082,21 @@ $('taskForm').addEventListener('submit',e=>{
  toast('Дело добавлено в план 🌷');
  setTimeout(()=>{taskSubmitting=false;if(submitButton){submitButton.disabled=false;submitButton.textContent='Добавить'}},650);
 },{capture:true});
-function renderWeek(){const host=$('week');host.innerHTML='';const start=new Date();const dow=(start.getDay()+6)%7;start.setDate(start.getDate()-dow);for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);const k=dateKey(d),btn=document.createElement('button');btn.className='day'+(k===todayKey?' today':'')+(k===selectedDay?' selected':'');const n=tasks.filter(t=>taskDate(t)===k).length;btn.innerHTML=d.toLocaleDateString('ru-RU',{weekday:'short'})+'<b>'+d.getDate()+'</b><small>'+ (n?n+' дел':'·')+'</small>';btn.onclick=()=>{selectedDay=k;renderWeek()};host.append(btn)}const d=new Date(selectedDay+'T12:00:00');$('dayTitle').textContent='Планы на '+d.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});const list=$('dayTasks');list.innerHTML='';const arr=tasks.filter(t=>taskDate(t)===selectedDay);if(!arr.length)list.innerHTML='<div class="empty">На этот день пока нет планов 🌸</div>';arr.forEach(t=>{const row=document.createElement('div');row.className='task'+(t.done?' done':'');const mark=document.createElement('span');mark.textContent=t.done?'✓':'○';mark.style.color='#d28da7';const name=document.createElement('span');name.className='name';name.textContent=t.title;const tag=document.createElement('span');tag.className='tag';tag.textContent=t.category;row.append(mark,name,tag);list.append(row)})}
+function renderWeek(){
+ const host=$('week');host.innerHTML='';
+ const start=new Date();const dow=(start.getDay()+6)%7;start.setDate(start.getDate()-dow);
+ for(let i=0;i<7;i++){
+  const d=new Date(start);d.setDate(start.getDate()+i);const k=dateKey(d),btn=document.createElement('button');
+  btn.className='day'+(k===todayKey?' today':'')+(k===selectedDay?' selected':'');
+  const n=tasks.filter(t=>taskDate(t)===k).length;
+  btn.innerHTML=d.toLocaleDateString('ru-RU',{weekday:'short'})+'<b>'+d.getDate()+'</b><small>'+(n?n+' дел':'·')+'</small>'+(k===todayKey?'<em>Сегодня</em>':'');
+  btn.onclick=()=>{selectedDay=k;renderWeek()};host.append(btn);
+ }
+ const d=new Date(selectedDay+'T12:00:00');$('dayTitle').textContent='Планы на '+d.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'});
+ const list=$('dayTasks');list.innerHTML='';const arr=tasks.filter(t=>taskDate(t)===selectedDay);
+ if(!arr.length)list.innerHTML='<div class="empty">На этот день пока нет планов 🌸</div>';
+ arr.forEach(t=>{const row=document.createElement('div');row.className='task'+(t.done?' done':'');const mark=document.createElement('span');mark.textContent=t.done?'✓':'○';mark.style.color='#d28da7';const name=document.createElement('span');name.className='name';name.textContent=t.title;const tag=document.createElement('span');tag.className='tag';tag.textContent=(t.category||'Дело')+(t.time?' · '+t.time:'');row.append(mark,name,tag);list.append(row)});
+}
 function renderHabits(){const host=$('habitList');host.innerHTML='';const checks=habitChecks[todayKey]||{};habits.forEach((h,i)=>{const row=document.createElement('div');row.className='habit'+(checks[i]?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!checks[i];cb.onchange=()=>{habitChecks[todayKey]=habitChecks[todayKey]||{};habitChecks[todayKey][i]=cb.checked;write('habitChecks',habitChecks);if(cb.checked){wins.unshift({text:'Привычка: '+h,date:todayKey,auto:true});write('wins',wins);celebrate('Ещё одна звёздочка в коллекцию! ✨');renderWins()}renderHabits()};const label=document.createElement('label');label.textContent=h;const del=document.createElement('button');del.className='secondary small';del.textContent='×';del.onclick=()=>{habits.splice(i,1);write('habits',habits);renderHabits()};row.append(cb,label,del);host.append(row)});const n=habits.filter((h,i)=>checks[i]).length,p=habits.length?Math.round(n/habits.length*100):0;$('habitCount').textContent=n+' из '+habits.length+' привычек выполнено';$('habitPct').textContent=p+'%';$('habitBar').style.width=p+'%'}
 
 function renderMood(){const host=$('moodHistory');host.innerHTML='';moods.slice(0,7).forEach(m=>{const d=document.createElement('div');d.className='mini';const b=document.createElement('strong');b.textContent=m.mood+' · '+m.date;const p=document.createElement('p');p.textContent=m.note||'Без заметки';d.append(b,p);host.append(d)})}
