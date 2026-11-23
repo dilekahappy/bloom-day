@@ -832,6 +832,25 @@ body{background:linear-gradient(180deg,#17233d 0,#263650 36%,#d8dce8 100%) fixed
 #home .grid>.panel:first-child h2{position:relative!important;z-index:2!important;padding-top:25px!important}
 #home .grid>.panel:first-child h2:before{content:"❄  ✧  ❄  ·  ✦  ·  ❄  ✧  ❄";display:block;text-align:center;font:12px Georgia,serif;letter-spacing:3px;color:#a98a9d;opacity:.82;margin:0 0 10px}
 #home .grid>.panel:first-child .sub,#home .grid>.panel:first-child #taskForm,#home .grid>.panel:first-child .stat,#home .grid>.panel:first-child .progress,#home .grid>.panel:first-child #tasks{position:relative!important;z-index:2!important}
+
+/* Requested tidy-up: remove the pink blocky skyline decorations, keep falling snow */
+.panel:before,.rewardbox:before,.mini:before,.menuday:before,.reward:before{content:none!important;display:none!important;background:none!important;clip-path:none!important}
+#home .grid>.panel:first-child .plan-winter-decor{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;height:38px;margin:-5px 0 7px;color:#8cae9b}
+.plan-winter-decor svg{display:block;width:min(100%,300px);height:42px;filter:drop-shadow(0 2px 3px #fff)}
+.plan-winter-decor span{font-size:13px;color:#a8c4d8}
+#home .grid>.panel:first-child h2{position:relative;z-index:2}
+.menu-generator{padding:16px;border-radius:18px;background:linear-gradient(145deg,#fffafcf2,#f1e2ebf2);border:1px solid #ead4df}
+.menu-generator>label{display:block;font-weight:600;color:#5c5068;margin-bottom:8px}
+.menu-generator select{width:100%;margin-bottom:10px}
+.menu-generator>button{width:100%}
+.menu-results{margin-top:16px}
+.menu-results h3{font:20px Georgia,serif;color:#40516c;margin:0 0 10px}
+.menu-idea{position:relative;padding:13px 13px 13px 48px;margin:9px 0;border-radius:15px;background:#fffafcf2;border:1px solid #ead9e3}
+.menu-idea strong{display:block;color:#65485b;font-size:15px;line-height:1.35}
+.menu-idea p{margin:5px 0 0;color:#8b7c8a;font-size:13px;line-height:1.45}
+.idea-number{position:absolute;left:13px;top:13px;color:#71917e;font:italic 15px Georgia,serif}
+.menu-results>.small{margin-top:5px}
+@media(max-width:800px){.plan-winter-decor{margin-top:-4px!important}.menu-generator{padding:13px}.menu-idea{padding-left:42px}}
 </style>
 <style id="bloom-final-layout-fix">
 #quickgrid{display:flex!important;flex-flow:row nowrap!important;align-items:stretch!important;gap:8px!important;width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch;scrollbar-width:thin;touch-action:pan-x}
@@ -994,7 +1013,7 @@ body:before{opacity:.32!important}
 </div>
 <section class="view active" id="home">
 <div class="grid">
-<div class="panel"><img class="plan-bg-art" src="./%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20ChatGPT%2016%20%D0%BD%D0%BE%D1%8F%D0%B1.%202026%20%D0%B3.%2C%2012_07_08.jpg" alt="" aria-hidden="true"><h2>Мой план на сегодня</h2><div class="sub">Отмечай дела — зверята будут радоваться вместе с тобой!</div>
+<div class="panel"><img class="plan-bg-art" src="./%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20ChatGPT%2016%20%D0%BD%D0%BE%D1%8F%D0%B1.%202026%20%D0%B3.%2C%2012_07_08.jpg" alt="" aria-hidden="true"><div class="plan-winter-decor" aria-hidden="true"><svg viewBox="0 0 300 42" role="presentation"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 34 L22 7 L32 34 Z M17 25 H27 M19 18 H25 M22 34 V39" stroke="#6f927e" stroke-width="1.7"/><path d="M58 34 L69 3 L80 34 Z M63 25 H75 M65 16 H73 M69 34 V39" stroke="#6f927e" stroke-width="1.7"/><path d="M220 34 L231 7 L242 34 Z M225 25 H237 M227 18 H235 M231 34 V39" stroke="#6f927e" stroke-width="1.7"/><path d="M265 34 L276 3 L287 34 Z M270 25 H282 M272 16 H280 M276 34 V39" stroke="#6f927e" stroke-width="1.7"/><path d="M106 19 ✧ M150 11 ✦ M194 19 ✧" stroke="#c49b68" stroke-width="1.5"/></g><circle cx="22" cy="6" r="2" fill="#d9b477"/><circle cx="69" cy="2" r="2" fill="#d9b477"/><circle cx="231" cy="6" r="2" fill="#d9b477"/><circle cx="276" cy="2" r="2" fill="#d9b477"/></svg><span>❄</span></div><h2>Мой план на сегодня</h2><div class="sub">Отмечай дела — зверята будут радоваться вместе с тобой!</div>
 <form class="add" id="taskForm"><input id="taskInput" placeholder="Например: разобрать кухню 10 минут" required><label class="task-field">Категория<select id="category"><option>Дом</option><option>Работа</option><option>Для себя</option><option>Движение</option></select></label><label class="task-field">Время<input id="taskTime" type="time" aria-label="Время напоминания"></label><label class="task-field task-date">Дата<input id="taskDate" type="date" aria-label="Дата задачи"></label><button>Добавить</button></form>
 <div class="stat"><span id="count">0 из 0 выполнено</span><span id="percent">0%</span></div><div class="progress"><i id="bar"></i></div><div id="tasks"></div></div>
 <aside><section class="panel"><h2>Твой мягкий старт</h2><div class="mini"><strong id="promptTitle">Начни с малого ♡</strong><p id="prompt">Поставь ноги на пол, сделай глоток воды и выбери одно простое дело на 5 минут.</p></div><button class="start" id="tiny">Мне сложно начать</button><button class="secondary start" id="encourage">Мне нужна поддержка</button></section>
@@ -1003,7 +1022,7 @@ body:before{opacity:.32!important}
 <section class="view" id="calendar"><div class="panel"><img class="section-banner" src="./calendar-banner.png" alt="Календарь Bloom Day"><h2>Моя неделя ✨</h2><div class="sub">Выбери день, чтобы посмотреть его задачи.</div><div class="week" id="week"></div><h2 id="dayTitle">Планы на день</h2><div id="dayTasks"></div><button class="secondary" id="goTimer">⌛ Таймер для дела — на главной</button></div></section>
 <section class="view" id="habits"><div class="panel"><img class="section-banner" src="./habits-banner.png" alt="Напоминания Bloom Day"><h2>Мои напоминания 🔔</h2><div class="sub">Напиши сама, о чём напомнить, выбери время и дни. Например: «выпить воды».</div><div class="mini reminder-manager"><form class="reminderForm"><input class="reminderTitle" placeholder="О чём напомнить? Например, выпить воды" required><div class="rowform"><input class="reminderTime" type="time" value="10:00" required><button type="submit">Добавить напоминание</button></div><div class="note">Повторять в выбранные дни:</div><div class="repeat-days"><label><input type="checkbox" value="1" checked>Пн</label><label><input type="checkbox" value="2" checked>Вт</label><label><input type="checkbox" value="3" checked>Ср</label><label><input type="checkbox" value="4" checked>Чт</label><label><input type="checkbox" value="5" checked>Пт</label><label><input type="checkbox" value="6" checked>Сб</label><label><input type="checkbox" value="0" checked>Вс</label></div></form><div class="reminderList"></div><p id="notifyStatus" class="note">Для push-уведомлений включи колокольчик и разреши уведомления.</p></div></div></section>
 <section class="view" id="mood"><div class="panel"><h2>Как ты сегодня? 💗</h2><div class="sub">Можно просто выбрать настроение и оставить пару слов для себя.</div><div class="sub">Выбери все эмоции, которые подходят твоему настроению.</div><div class="moods" id="moods"><button class="mood" type="button" data-mood="🥰">🥰</button><button class="mood" type="button" data-mood="😊">😊</button><button class="mood" type="button" data-mood="😌">😌</button><button class="mood" type="button" data-mood="😎">😎</button><button class="mood" type="button" data-mood="🤩">🤩</button><button class="mood" type="button" data-mood="😐">😐</button><button class="mood" type="button" data-mood="🥺">🥺</button><button class="mood" type="button" data-mood="😔">😔</button><button class="mood" type="button" data-mood="😢">😢</button><button class="mood" type="button" data-mood="😴">😴</button><button class="mood" type="button" data-mood="😤">😤</button><button class="mood" type="button" data-mood="😡">😡</button><button class="mood" type="button" data-mood="🤯">🤯</button><button class="mood" type="button" data-mood="🥳">🥳</button><button class="mood" type="button" data-mood="🙏">🙏</button><button class="mood" type="button" data-mood="💪">💪</button><button class="mood" type="button" data-mood="❤️">❤️</button><button class="mood" type="button" data-mood="🌸">🌸</button><button class="mood" type="button" data-mood="☀️">☀️</button><button class="mood" type="button" data-mood="🌧️">🌧️</button></div><textarea id="moodNote" rows="3" placeholder="Что хочется записать сегодня?"></textarea><button id="saveMood" style="margin-top:10px">Сохранить запись</button><div id="moodHistory" style="margin-top:18px"></div></div></section>
-<section class="view" id="menu"><div class="panel"><img class="section-banner" src="./menu-banner.png" alt="Меню Bloom Day"><h2>🍲 Моё уютное меню на неделю</h2><div class="sub">Готовые идеи на неделю из обычных домашних продуктов: завтрак, обед, ужин, полдник и полезный перекус.</div><div class="menuweek" id="menuWeek"></div><div class="menuhint">Это идеи для разнообразного питания, а не строгая диета. Меняй блюда местами и используй то, что есть дома.</div></div></section>
+<section class="view" id="menu"><div class="panel"><img class="section-banner" src="./menu-banner.png" alt="Меню Bloom Day"><h2>🍲 Что приготовим?</h2><div class="sub">Выбери, для какого приёма пищи нужны идеи — Bloom Day подберёт несколько вариантов.</div><div class="menu-generator"><label for="mealType">Что будем готовить?</label><select id="mealType"><option value="Завтрак">Завтрак</option><option value="Обед">Обед</option><option value="Ужин" selected>Ужин</option></select><button type="button" id="generateMeal">✨ Предложить идеи</button><div class="menu-results" id="menuResults" aria-live="polite"><div class="menuhint">Нажми на кнопку — и появятся идеи блюд с составом.</div></div></div></div></section>
 
 
 <nav class="bottomnav" aria-label="Основная навигация"><button class="navbtn active" data-view="home"><span>⌂</span>Главная</button><button class="navbtn" data-view="calendar"><span>▦</span>Планы</button><button class="navbtn" data-view="habits"><span>♡</span>Напоминания</button><button class="navbtn" data-view="menu"><span>♧</span>Меню</button></nav><div class="footer">Пусть в твоём дне будет место и для планов, и для волшебства. ♡ 🎄</div>
@@ -1160,51 +1179,48 @@ function renderTimerTasks(){const sel=$('timerTask');if(!sel)return;const keep=s
 function showClock(){const m=Math.floor(timerLeft/60),s=timerLeft%60;$('clock').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}$('timerStart').onclick=()=>{const timerTaskName=$('timerCustomTask').value.trim()||$('timerTask').value;if(!timerId&&timerTaskName)$('timerMessage').textContent='Сейчас занимаемся: '+timerTaskName+' ♡';if(timerId){clearInterval(timerId);timerId=null;$('timerStart').textContent='Продолжить';return}$('timerStart').textContent='Пауза';timerId=setInterval(()=>{timerLeft--;showClock();if(timerLeft<=0){clearInterval(timerId);timerId=null;$('timerStart').textContent='Начать';$('timerMessage').textContent='Время вышло — сделай небольшой перерыв ☕';celebrate('Ты уделила время своему делу!')}} ,1000)};$('timerReset').onclick=()=>{clearInterval(timerId);timerId=null;timerLeft=1500;$('timerStart').textContent='Начать';$('timerMessage').textContent='Ты можешь сделать паузу в любой момент ♡';showClock()};document.querySelectorAll('.preset').forEach(b=>b.onclick=()=>{clearInterval(timerId);timerId=null;timerLeft=Number(b.dataset.min)*60;$('timerStart').textContent='Начать';showClock()});
 
 if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Service worker registration failed',err)));}
-function renderMenu(){const host=$('menuWeek');host.innerHTML='';const week=[
-['Понедельник',[
-['Овсянка с бананом и йогуртом','Овсяные хлопья, молоко или йогурт, банан'],
-['Куриный суп с картофелем и овощами','Курица, картофель, морковь, лук, зелень'],
-['Гречка с курицей и салатом','Гречка, куриное филе, огурец, зелень'],
-['Творог с яблоком','Творог, яблоко, корица'],
-['Яблоко и орехи','Яблоко, грецкие орехи']]],
-['Вторник',[
-['Омлет с сыром и тостом','Яйца, молоко, сыр, цельнозерновой хлеб'],
-['Рис с курицей и овощами','Рис, курица, морковь, сладкий перец'],
-['Запечённый картофель с творогом','Картофель, творог, зелень, натуральный йогурт'],
-['Кефир и банан','Кефир, банан'],
-['Натуральный йогурт','Йогурт без добавок, сезонные ягоды']]],
-['Среда',[
-['Творог с фруктами и овсянкой','Творог, яблоко или груша, овсяные хлопья'],
-['Тушёная капуста с индейкой и рисом','Капуста, индейка, рис, морковь'],
-['Макароны с курицей и овощами','Макароны, курица, кабачок, морковь'],
-['Яйцо и огурец с хлебом','Яйцо, огурец, цельнозерновой хлеб'],
-['Груша и орехи','Груша, орехи']]],
-['Четверг',[
-['Гречневая каша с молоком','Гречка, молоко, банан или яблоко'],
-['Тефтели с картофельным пюре','Фарш индейки или курицы, рис, картофель, молоко'],
+const menuIdeas={
+'Завтрак':[
+['Омлет с сыром и зеленью','Яйца, немного молока, сыр, зелень'],
+['Овсянка с бананом и йогуртом','Овсяные хлопья, банан, натуральный йогурт'],
+['Творожная миска с ягодами','Творог, ягоды или фрукт, немного мёда'],
+['Тёплые бутерброды с сыром','Хлеб, сыр, яйцо, огурец'],
+['Сырники','Творог, яйцо, мука, йогурт для подачи'],
+['Гречневая каша с молоком','Гречка, молоко, фрукт по желанию'],
+['Яичные маффины с овощами','Яйца, сладкий перец, сыр, зелень']],
+'Обед':[
+['Куриный суп с овощами','Курица, картофель, морковь, лук, зелень'],
+['Рис с курицей и овощами','Рис, куриное филе, морковь, сладкий перец'],
+['Тефтели с картофельным пюре','Фарш куриный или индейки, рис, картофель, молоко'],
+['Гречка с котлетами','Гречка, фарш, лук, зелень'],
 ['Овощное рагу с фасолью','Фасоль, картофель, морковь, кабачок'],
-['Йогурт с овсянкой','Натуральный йогурт, овсяные хлопья, фрукт'],
-['Банан и сыр','Банан, кусочек сыра']]],
-['Пятница',[
-['Яйца, тост и огурец','Яйца, хлеб, огурец'],
-['Курица с булгуром и овощами','Курица, булгур, морковь, сладкий перец'],
-['Картофельная запеканка с курицей','Картофель, курица, сыр, йогурт'],
-['Творог с фруктом','Творог, сезонный фрукт'],
-['Яблоко с ореховой пастой','Яблоко, арахисовая паста']]],
-['Суббота',[
-['Овсяные панкейки с йогуртом','Овсяные хлопья, яйцо, банан, йогурт'],
-['Суп с фрикадельками','Фарш, картофель, морковь, рис, зелень'],
-['Гречка с овощами и яйцом','Гречка, яйцо, морковь, кабачок'],
-['Кефир и фрукт','Кефир, яблоко или банан'],
-['Бутерброд с сыром','Цельнозерновой хлеб, сыр, огурец']]],
-['Воскресенье',[
-['Йогурт с бананом и мюсли','Натуральный йогурт, банан, мюсли'],
-['Плов с курицей и овощами','Рис, курица, морковь, лук'],
-['Запечённая курица с картофелем','Курица, картофель, морковь, специи'],
-['Творожная запеканка','Творог, яйцо, манка или овсяная мука'],
-['Фрукты и орехи','Сезонные фрукты, орехи']]]];
-const labels=['Завтрак','Обед','Ужин','Полдник','Перекус'];
-week.forEach(([day,meals])=>{const card=document.createElement('div');card.className='menuday';const h=document.createElement('b');h.textContent=day;card.append(h);meals.forEach(([meal,composition],i)=>{const line=document.createElement('div');line.className='mealidea';const title=document.createElement('strong');title.textContent=labels[i]+': '+meal;const ing=document.createElement('small');ing.textContent='Состав: '+composition;line.append(title,ing);card.append(line)});host.append(card)})}
+['Макароны с курицей в сливочном соусе','Макароны, курица, немного сливок, сыр'],
+['Запечённый картофель с индейкой','Картофель, филе индейки, специи, зелень']],
+'Ужин':[
+['Курица с овощами в духовке','Куриное филе, кабачок, морковь, сладкий перец'],
+['Гречка с курицей и огуречным салатом','Гречка, куриное филе, огурец, зелень'],
+['Картофельная запеканка','Картофель, фарш куриный или индейки, сыр'],
+['Рыба с рисом и овощами','Филе рыбы, рис, овощи, лимон по желанию'],
+['Омлет с овощами и тостом','Яйца, молоко, овощи, хлеб'],
+['Тушёная капуста с индейкой','Капуста, индейка, морковь, лук'],
+['Паста с курицей и кабачком','Макароны, курица, кабачок, немного сыра']]
+};
+function generateMealIdeas(){
+ const type=$('mealType').value,host=$('menuResults');if(!host)return;
+ const pool=[...menuIdeas[type]];
+ for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+ host.innerHTML='';
+ const title=document.createElement('h3');title.textContent='Идеи на '+type.toLocaleLowerCase('ru-RU');host.append(title);
+ pool.slice(0,3).forEach(([name,ingredients],index)=>{
+  const card=document.createElement('article');card.className='menu-idea';
+  const badge=document.createElement('span');badge.className='idea-number';badge.textContent='0'+(index+1);
+  const h=document.createElement('strong');h.textContent=name;
+  const p=document.createElement('p');p.textContent='Что понадобится: '+ingredients;
+  card.append(badge,h,p);host.append(card);
+ });
+ const again=document.createElement('button');again.type='button';again.className='secondary small';again.textContent='Ещё идеи';again.onclick=generateMealIdeas;host.append(again);
+}
+$('generateMeal')?.addEventListener('click',generateMealIdeas);
 renderTasks();renderWeek();renderMood();renderMenu();renderRecurring();showClock();renderTimerTasks();
 
 /* Navigation and timer use the single set of handlers above. */
